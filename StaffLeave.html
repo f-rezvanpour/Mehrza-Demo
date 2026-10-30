@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>درخواست مرخصی</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--mut);font-weight:600}
+.fld input,.fld select{height:46px;border-radius:14px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);padding:0 14px;font:inherit;font-size:15px;outline:0;width:100%;box-sizing:border-box}
+.fld input:focus,.fld select:focus{border-color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.opt{flex:none;height:40px;padding:0 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.opt.on{border-color:var(--ac);color:var(--ac)}
+</style>
+</helmet>
+<div class="app a-ter" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="StaffMe.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">درخواست مرخصی</h1><div class="sub t12 m">مانده استحقاقی: ۱۲ روز</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card rise d1 fc g12"><div class="fx g8" style="flex-wrap:wrap"><sc-for list="{{types}}" as="o" hint-placeholder-count="4"><button type="button" class="opt tap {{o.cls}}" onClick="{{o.pick}}">{{o.n}}</button></sc-for></div>
+      <div class="grid2" style="gap:10px"><label class="fld"><span>از تاریخ</span><input type="text" value="۱۴۰۵/۰۸/۱۵"></label><label class="fld"><span>تا تاریخ</span><input type="text" value="۱۴۰۵/۰۸/۱۶"></label></div>
+      <label class="fld"><span>توضیح</span><input type="text" placeholder="مثلا: مسافرت"></label></div>
+    <button type="button" class="btn tap rise d2" style="flex:none" onClick="{{send}}">{{btn}}</button>
+    <div class="fx ai jb rise d3"><h2 class="h2">درخواست‌های قبلی</h2></div>
+    <div class="item rise d4"><div class="f1"><b class="t14 w8">استحقاقی، ۲ روز</b><div class="t12 m">مرداد</div></div><span class="pill p-ok">تایید شد</span></div>
+    <div class="item rise d5"><div class="f1"><b class="t14 w8">ساعتی، ۳ ساعت</b><div class="t12 m">شهریور</div></div><span class="pill p-ok">تایید شد</span></div>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { t: 0, s: false }; }
+  renderVals() {
+    const T = ['استحقاقی', 'استعلاجی', 'ساعتی', 'بدون حقوق'];
+    return { types: T.map((n, i) => ({ n, cls: i === this.state.t ? 'on' : '', pick: () => this.setState({ t: i, s: false }) })), btn: this.state.s ? 'ارسال شد، منتظر تایید مدیر' : 'ارسال درخواست', send: () => this.setState({ s: true }) };
+  }
+}
+</script>
+</body>
+</html>

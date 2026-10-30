@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>آزمون محصول</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.ans{width:100%;text-align:right;color:var(--tx);cursor:pointer;font-size:14.5px}
+.ans.ok{border-color:#8FD3A4;background:rgba(143,211,164,.12)}
+.ans.no{border-color:#F08A8A;background:rgba(240,138,138,.1)}
+</style>
+</helmet>
+<div class="app a-vio" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="KnowProduct.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">آزمون آمریکانو</h1><div class="sub t12 m">قبولی ۸۰٪، حداکثر ۳ بار در روز</div></div>
+  </div>
+  <div class="scroll">
+    <sc-if value="{{run}}" hint-placeholder-val="{{true}}">
+      <div class="card hero rise d1"><div class="fx ai jb"><span class="pill p-info">سوال {{n}} از ۵</span><span class="t12 m">امتیاز فعلی {{score}}</span></div><div class="track" style="margin-top:8px"><div class="fillx" style="width:{{pg}}%;transition:width .3s"></div></div><div class="t16 w8" style="margin-top:14px">{{q}}</div></div>
+      <sc-for list="{{opts}}" as="o" hint-placeholder-count="4"><button type="button" class="item ans tap {{o.cls}}" onClick="{{o.pick}}">{{o.t}}</button></sc-for>
+      <sc-if value="{{answered}}" hint-placeholder-val="{{false}}"><div class="card pop"><div class="t13">{{fb}}</div><button type="button" class="btn tap" style="flex:none;margin-top:10px" onClick="{{next}}">{{nextBtn}}</button></div></sc-if>
+    </sc-if>
+    <sc-if value="{{fin}}" hint-placeholder-val="{{false}}">
+      <div class="card hero pop tc" style="border-color:{{rc}}"><div class="t12 m">نتیجه</div><div class="t36 w9" style="color:{{rc}};line-height:1.2">{{pct}}</div><div class="t16 w8">{{verdict}}</div><div class="t12 m">{{note}}</div></div>
+      <button type="button" class="btn ghost tap" style="flex:none" onClick="{{again}}">آزمون دوباره</button>
+      <a href="KnowHome.html" class="btn tap" style="flex:none">بازگشت به دانش</a>
+    </sc-if>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="StaffHome.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { i: 0, pick: -1, score: 0 }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const Q = [
+      ['چند گرم دان برای یک آمریکانو استفاده می‌شود؟', ['۱۲ گرم', '۱۸ گرم', '۲۴ گرم', '۳۶ گرم'], 1, 'درست است. مقدار ثابت ۱۸ گرم برای یک شات.'],
+      ['زمان مناسب عصاره‌گیری چقدر است؟', ['۱۰ تا ۱۵ ثانیه', '۲۵ تا ۳۰ ثانیه', '۴۵ تا ۶۰ ثانیه', 'فرقی نمی‌کند'], 1, '۲۵ تا ۳۰ ثانیه، حدود ۳۶ گرم عصاره.'],
+      ['چند میلی‌لیتر آب داغ اضافه می‌شود؟', ['۵۰', '۱۰۰', '۱۵۰', '۳۰۰'], 2, '۱۵۰ میلی‌لیتر آب داغ.'],
+      ['اگر شات تلخ شد چه کنیم؟', ['آسیاب را ریزتر کنیم', 'آسیاب را کمی درشت‌تر کنیم', 'شیر اضافه کنیم', 'دان را عوض کنیم'], 1, 'درشت‌تر کردن آسیاب تلخی را کم می‌کند.'],
+      ['آخرین مرحله چیست؟', ['شستن پورتافیلتر', 'درب و نوشتن نام مشتری', 'اضافه کردن شکر', 'ثبت ضایعات'], 1, 'درب را ببند و نام مشتری را بنویس.']
+    ];
+    const s = this.state;
+    const fin = s.i >= 5;
+    const cur = Q[Math.min(s.i, 4)];
+    const answered = s.pick >= 0;
+    const pct = Math.round(s.score / 5 * 100);
+    return {
+      run: !fin, fin, n: fa(Math.min(s.i, 4) + 1), score: fa(s.score), pg: String(Math.min(s.i, 4) * 20), q: cur[0], answered,
+      opts: cur[1].map((t, k) => ({ t, cls: !answered ? '' : (k === cur[2] ? 'ok' : (k === s.pick ? 'no' : '')), pick: () => { const c = this.state; if (c.pick >= 0) return; this.setState({ pick: k, score: c.score + (k === cur[2] ? 1 : 0) }); } })),
+      fb: s.pick === cur[2] ? 'درست! ' + cur[3] : 'نادرست. ' + cur[3], nextBtn: s.i === 4 ? 'دیدن نتیجه' : 'سوال بعد', next: () => this.setState({ i: this.state.i + 1, pick: -1 }),
+      pct: fa(pct) + '٪', rc: pct >= 80 ? '#8FD3A4' : '#F08A8A', verdict: pct >= 80 ? 'قبول شدی' : 'هنوز نه',
+      note: pct >= 80 ? 'نتیجه برای مدیر ثبت شد و در مسیر آشنایی اعمال شد.' : 'دانش آمریکانو را مرور کن و دوباره امتحان بده.',
+      again: () => this.setState({ i: 0, pick: -1, score: 0 })
+    };
+  }
+}
+</script>
+</body>
+</html>

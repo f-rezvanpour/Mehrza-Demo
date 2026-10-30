@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>رفع تعارض داده</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.opt{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 8px;border-radius:18px;background:var(--card2);border:2px solid var(--line);color:var(--tx);cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s}
+.opt.sel{border-color:#8CCBE0;background:rgba(140,203,224,.14)}
+</style>
+</helmet>
+<div class="app a-sky" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="Hub.html" aria-label="بازگشت به یکپارچه‌ساز"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">رفع تعارض داده</h1><div class="sub t12 m">قوانین اولویت‌بندی</div></div>
+    <span class="pill p-warn">{{pendingFa}} باز</span>
+  </div>
+
+  <div class="scroll">
+    <sc-if value="{{pending}}" hint-placeholder-val="{{true}}">
+      <div class="card hero rise d1" style="border-color:rgba(232,178,92,.5)">
+        <div class="fx ai g8" style="margin-bottom:4px"><svg class="i gold" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg><b class="t15 w8">موجودی لیوان کاغذی یکسان نیست</b></div>
+        <div class="t12 m" style="margin-bottom:12px">کدام عدد درست است؟ انتخاب شما در همه سیستم‌ها اعمال می‌شود.</div>
+        <div class="grid2">
+          <button type="button" class="opt {{aCls}}" onClick="{{pickA}}"><span class="t12 m">محک</span><b class="t24 w9">۲۴۰</b><span class="t11 m">ثبت ۱۳:۴۰</span></button>
+          <button type="button" class="opt {{bCls}}" onClick="{{pickB}}"><span class="t12 m">ورود دستی مدیر</span><b class="t24 w9">۲۶۰</b><span class="t11 m">ثبت ۱۳:۴۱</span></button>
+        </div>
+        <button type="button" class="btn tap" style="width:100%;flex:none;margin-top:12px" onClick="{{apply}}">اعمال روی همه سیستم‌ها</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{resolved}}" hint-placeholder-val="{{false}}">
+      <div class="card pop tc" style="border-color:#8FD3A4">
+        <svg class="i sage" viewBox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        <div class="t15 w8 sage">تعارض رفع شد</div>
+        <div class="t12 m">عدد {{chosenFa}} در لاگ ثبت و سینک شد.</div>
+      </div>
+    </sc-if>
+
+    <div class="fx ai jb rise d2"><h2 class="h2">قوانین رفع خودکار</h2><span class="t12 m">به ترتیب اولویت</span></div>
+
+    <div class="item rise d3"><span class="blob" style="width:34px;height:34px;border-radius:12px;font-weight:900">۱</span><div class="f1"><b class="t14 w8">محک مرجع مالی و انبار</b><div class="t12 m">اگر اختلاف بود، عدد محک ملاک است.</div></div><label class="swl"><input class="swi" type="checkbox" checked aria-label="فعال بودن قانون محک"><span class="sw"></span></label></div>
+    <div class="item rise d4"><span class="blob" style="width:34px;height:34px;border-radius:12px;font-weight:900">۲</span><div class="f1"><b class="t14 w8">کانتر مرجع فروش لحظه‌ای</b><div class="t12 m">فروش جدیدتر از موجودی قدیمی برنده است.</div></div><label class="swl"><input class="swi" type="checkbox" checked aria-label="فعال بودن قانون کانتر"><span class="sw"></span></label></div>
+    <div class="item rise d5"><span class="blob" style="width:34px;height:34px;border-radius:12px;font-weight:900">۳</span><div class="f1"><b class="t14 w8">اختلاف بالای ۱۰٪ به مدیر برود</b><div class="t12 m">تصمیم دستی، مثل کارت بالا.</div></div><label class="swl"><input class="swi" type="checkbox" checked aria-label="ارجاع اختلاف زیاد به مدیر"><span class="sw"></span></label></div>
+
+    <div class="grid3 rise d6">
+      <div class="card tc" style="padding:12px 6px"><div class="num">۴۱</div><div class="lbl">رفع خودکار</div></div>
+      <div class="card tc" style="padding:12px 6px"><div class="num">۳</div><div class="lbl">دستی</div></div>
+      <div class="card tc" style="padding:12px 6px"><div class="num sage">۹۸٪</div><div class="lbl">بدون دخالت</div></div>
+    </div>
+  </div>
+
+  <nav class="dock" aria-label="ناوبری یکپارچه‌ساز">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="Hub.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12l-3-3M20 16H8l3 3"/></svg></span>وضعیت</a>
+    <a href="HubLog.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14M5 10h14M5 15h9M5 20h6"/></svg></span>لاگ</a>
+    <a href="HubConflicts.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4"/></svg></span>تعارض</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { pick: 'a', done: false };
+  }
+  renderVals() {
+    const p = this.state.pick;
+    return {
+      pending: !this.state.done,
+      resolved: this.state.done,
+      pendingFa: this.state.done ? '۰' : '۱',
+      chosenFa: p === 'a' ? '۲۴۰' : '۲۶۰',
+      aCls: p === 'a' ? 'sel' : '',
+      bCls: p === 'b' ? 'sel' : '',
+      pickA: () => this.setState({ pick: 'a' }),
+      pickB: () => this.setState({ pick: 'b' }),
+      apply: () => this.setState({ done: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

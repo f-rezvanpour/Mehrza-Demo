@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>کمبو و ساعت تخفیف</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="ProdList.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">کمبو و ساعت تخفیف</h1><div class="sub t12 m">قیمت‌گذاری هوشمند با حفظ سود</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1"><div class="fx ai jb"><b class="t15 w8">کمبو صبحانه</b><span class="pill p-ok">فعال</span></div><div class="t13 m" style="margin:2px 0 8px">آمریکانو و کروسان</div>
+      <div class="fx ai jb"><div><div class="t11 m">جمع جداگانه ۱۷۵٬۰۰۰</div><div class="t20 w9 gold">{{price}}</div></div><div class="stp"><button type="button" onClick="{{less}}" aria-label="کم">−</button><b>{{pct}}٪</b><button type="button" onClick="{{more}}" aria-label="زیاد">+</button></div></div>
+      <div class="kv"><span class="m">بهای مواد کمبو</span><b>۵۷٬۲۰۰</b></div><div class="kv"><span class="m">سود ناخالص</span><b class="{{mc}}">{{m}}</b></div></div>
+    <div class="card rise d2"><div class="fx ai jb"><div><b class="t14 w8">ساعت تخفیف عصر</b><div class="t12 m">۱۵:۰۰ تا ۱۷:۰۰، همه نوشیدنی‌های قهوه</div></div><span class="pill p-info">۱۵٪</span></div><div class="t12 m" style="margin-top:6px">طبق تحلیل ساعتی، ۱۵ تا ۱۷ کمترین فروش را دارد.</div></div>
+    <div class="card rise d3" style="padding:4px 16px"><div class="kv"><b>ساعت تخفیف عصر</b><label class="swl"><input class="swi" type="checkbox" checked aria-label="ساعت تخفیف"><span class="sw"></span></label></div><div class="kv"><b>کمبو صبحانه</b><label class="swl"><input class="swi" type="checkbox" checked aria-label="کمبو"><span class="sw"></span></label></div><div class="kv"><b>منوی فصلی پاییز</b><label class="swl"><input class="swi" type="checkbox" aria-label="فصلی"><span class="sw"></span></label></div></div>
+    <button type="button" class="btn ghost tap rise d4" style="flex:none">+ کمبو جدید</button>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { p: 14 }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const p = this.state.p, price = Math.round(175000 * (1 - p / 100) / 1000) * 1000, m = (price - 57200) / price;
+    return { pct: fa(p), price: fmt(price) + ' تومان', m: fa(Math.round(m * 100)) + '٪', mc: m < 0.5 ? 'gold' : 'sage', less: () => this.setState({ p: Math.max(0, this.state.p - 1) }), more: () => this.setState({ p: Math.min(40, this.state.p + 1) }) };
+  }
+}
+</script>
+</body>
+</html>

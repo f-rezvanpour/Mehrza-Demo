@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>کار آفلاین</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-sage" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="CashierPOS.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">کار آفلاین</h1><div class="sub t12 m">وقتی اینترنت قطع می‌شود</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1 tc" style="border-color:{{bc}}"><div class="fx jc ai g8"><span class="dot pulse" style="background:{{bc}}"></span><b class="t16 w9">{{state}}</b></div><div class="t12 m" style="margin-top:4px">{{sub}}</div>
+      <div class="track" style="margin-top:10px"><div class="fillx ok" style="width:{{pg}}%;transition:width .3s"></div></div></div>
+    <div class="grid2 rise d2"><div class="card tc" style="padding:12px"><div class="num">{{q}}</div><div class="lbl">در صف همگام‌سازی</div></div><div class="card tc" style="padding:12px"><div class="num sage">{{ok}}</div><div class="lbl">همگام‌شده امروز</div></div></div>
+    <div class="fx g10 rise d3"><button type="button" class="btn ghost tap" onClick="{{cut}}">{{cutBtn}}</button><button type="button" class="btn tap" onClick="{{sale}}">ثبت فروش</button></div>
+    <div class="fx ai jb rise d4"><h2 class="h2">آفلاین چه کارهایی می‌شود؟</h2></div>
+    <div class="card rise d5" style="padding:4px 16px"><div class="kv"><span>سفارش‌گیری و پرداخت نقد</span><b class="sage">می‌شود</b></div><div class="kv"><span>پرداخت کارت‌خوان (دستگاه جدا)</span><b class="sage">می‌شود</b></div><div class="kv"><span>دستور تهیه و SOP</span><b class="sage">می‌شود</b></div><div class="kv"><span>ثبت ورود با Wi-Fi کافه</span><b class="sage">شبکه داخلی</b></div><div class="kv"><span>سفارش‌های اپ مشتری</span><b style="color:#F08A8A">نمی‌رسد تا وصل شود</b></div></div>
+    <div class="t12 m tc">پس از اتصال، صف به ترتیب ارسال می‌شود. اگر موجودی تغییر کرده باشد، تعارض به مدیر شعبه نشان داده می‌شود.</div>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="CashierPOS.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>صندوق</a>
+    <a href="CashierOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="CashClose.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>بستن صندوق</a>
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>کارمند</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { off: false, q: 0, ok: 126, sync: false }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const s = this.state;
+    return {
+      state: s.sync ? 'در حال همگام‌سازی...' : (s.off ? 'آفلاین' : 'آنلاین'), bc: s.sync ? '#E8B25C' : (s.off ? '#F08A8A' : '#8FD3A4'),
+      sub: s.sync ? 'ارسال صف به ترتیب' : (s.off ? 'فروش ادامه دارد، همه‌چیز در گوشی ذخیره می‌شود' : 'همه‌چیز لحظه‌ای ارسال می‌شود'),
+      pg: s.sync ? '60' : '100', q: fa(s.q), ok: fa(s.ok), cutBtn: s.off ? 'اتصال مجدد' : 'قطع اینترنت (نمایش)',
+      cut: () => { const c = this.state; if (c.sync) return; if (!c.off) { this.setState({ off: true }); } else { this.setState({ sync: true }); setTimeout(() => { const d = this.state; this.setState({ off: false, sync: false, ok: d.ok + d.q, q: 0 }); }, 1400); } },
+      sale: () => { const c = this.state; if (c.off) this.setState({ q: c.q + 1 }); else this.setState({ ok: c.ok + 1 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

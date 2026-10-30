@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>محصولات و SOP</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--mut);font-weight:600}
+.fld input,.fld select{height:46px;border-radius:14px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);padding:0 14px;font:inherit;font-size:15px;outline:0;width:100%;box-sizing:border-box}
+.fld input:focus,.fld select:focus{border-color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.cat{flex:none;height:36px;padding:0 15px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.cat.on{border-color:var(--ac);color:var(--ac)}
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="Main.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">محصولات و SOP</h1><div class="sub t12 m">هر محصول: قیمت، دستور تهیه و مواد مصرفی</div></div><a href="ProdEdit.html" class="chip tap" style="border-color:#E8B25C;color:#E8B25C">+ محصول</a>
+  </div>
+  <div class="scroll">
+    <div class="grid3 rise d1" style="gap:8px">
+      <div class="card tc" style="padding:10px 4px"><div class="num">۹</div><div class="lbl">محصول فعال</div></div>
+      <div class="card tc" style="padding:10px 4px"><div class="num sage">۹</div><div class="lbl">دارای SOP</div></div>
+      <div class="card tc" style="padding:10px 4px"><div class="num gold">{{avg}}</div><div class="lbl">میانگین سود ناخالص</div></div>
+    </div>
+    <div class="fx g8 rise d2" style="overflow-x:auto"><sc-for list="{{cats}}" as="c" hint-placeholder-count="4"><button type="button" class="cat tap {{c.cls}}" onClick="{{c.pick}}">{{c.name}}</button></sc-for></div>
+    <sc-for list="{{items}}" as="p" hint-placeholder-count="6">
+      <a href="ProdEdit.html" class="item tap rise d3">
+        <span class="blob" style="background:{{p.col}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>
+        <div class="f1"><b class="t14 w8">{{p.name}}</b><div class="t12 m">قیمت {{p.price}}، مواد {{p.cost}}</div></div>
+        <div class="tc"><b class="sage t14">{{p.m}}</b><div class="t11 m">سود ناخالص</div></div>
+      </a>
+    </sc-for>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { cat: 'همه' }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const P = [
+      ['اسپرسو', 'قهوه', 70000, 23600, '#E8B25C'], ['آمریکانو', 'قهوه', 95000, 26200, '#EE8F66'], ['لاته', 'قهوه', 120000, 38100, '#F5A1BB'],
+      ['کاپوچینو', 'قهوه', 115000, 33300, '#B8ABF7'], ['وی‌شصت', 'دمی', 130000, 30000, '#8CCBE0'], ['شکلات داغ', 'نوشیدنی', 110000, 35000, '#EE8F66'],
+      ['چیزکیک', 'شیرینی', 135000, 48000, '#F5A1BB'], ['کروسان', 'شیرینی', 80000, 31000, '#E8B25C'], ['کیک هویج', 'شیرینی', 90000, 33000, '#8FD3A4']
+    ];
+    const cats = ['همه', 'قهوه', 'دمی', 'نوشیدنی', 'شیرینی'];
+    const sel = this.state.cat;
+    const L = P.filter((p) => sel === 'همه' || p[1] === sel);
+    const avg = P.reduce((a, p) => a + (p[2] - p[3]) / p[2], 0) / P.length;
+    return {
+      avg: fa(Math.round(avg * 100)) + '٪',
+      cats: cats.map((c) => ({ name: c, cls: c === sel ? 'on' : '', pick: () => this.setState({ cat: c }) })),
+      items: L.map((p) => ({ name: p[0], col: p[4], price: fmt(p[2]), cost: fmt(p[3]), m: fa(Math.round((p[2] - p[3]) / p[2] * 100)) + '٪' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

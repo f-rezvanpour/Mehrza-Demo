@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>اضافه‌کاری</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-ter" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="StaffMe.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">اضافه‌کاری</h1><div class="sub t12 m">از روی ساعت واقعی حضور محاسبه می‌شود</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1"><div class="fx ai jb"><div><div class="t12 m">این ماه</div><div class="t24 w9">۱۸ ساعت</div></div><span class="pill p-info">۲٬۷۰۰٬۰۰۰ تومان</span></div></div>
+    <div class="card rise d2" style="border-color:#E8B25C"><div class="fx ai jb"><b class="t14 w8">پنجشنبه، ۱ ساعت و ۳۰ دقیقه</b><span class="pill {{pc}}">{{pt}}</span></div><div class="t12 m" style="margin:4px 0 8px">ساعت خروج ۲۳:۳۰، شیفت تا ۲۲:۰۰ بود</div><button type="button" class="btn tap" style="flex:none;height:42px;font-size:13px;border-radius:14px" onClick="{{send}}">{{btn}}</button></div>
+    <div class="item rise d3"><div class="f1"><b class="t14 w8">دوشنبه، ۲ ساعت</b></div><span class="pill p-ok">تایید شد</span></div>
+    <div class="item rise d4"><div class="f1"><b class="t14 w8">شنبه، ۱ ساعت</b></div><span class="pill p-ok">تایید شد</span></div>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: false }; }
+  renderVals() { return { pt: this.state.s ? 'منتظر تایید' : 'ثبت نشده', pc: this.state.s ? 'p-warn' : 'p-info', btn: this.state.s ? 'برای سرپرست ارسال شد' : 'ارسال برای تایید', send: () => this.setState({ s: true }) }; }
+}
+</script>
+</body>
+</html>

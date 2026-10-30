@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ویرایش محصول</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--mut);font-weight:600}
+.fld input,.fld select{height:46px;border-radius:14px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);padding:0 14px;font:inherit;font-size:15px;outline:0;width:100%;box-sizing:border-box}
+.fld input:focus,.fld select:focus{border-color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.chk{width:100%;text-align:right;color:var(--tx);cursor:pointer}
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="ProdList.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">ویرایش محصول</h1><div class="sub t12 m">آمریکانو، قهوه</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card rise d1 fc g12">
+      <label class="fld"><span>نام محصول</span><input type="text" value="آمریکانو"></label>
+      <div class="grid2" style="gap:10px">
+        <label class="fld"><span>دسته</span><select><option>قهوه</option><option>دمی</option><option>نوشیدنی</option><option>شیرینی</option></select></label>
+        <label class="fld"><span>قیمت فروش (تومان)</span><input type="text" inputmode="numeric" value="۹۵۰۰۰" onInput="{{onPrice}}"></label>
+      </div>
+    </div>
+    <div class="card hero rise d2">
+      <div class="fx ai jb"><div><div class="t12 m">بهای مواد هر لیوان</div><div class="t24 w9">{{cost}}</div></div><div class="tc"><div class="t12 m">سود ناخالص</div><div class="t24 w9 sage">{{margin}}</div></div></div>
+      <div class="track" style="margin-top:10px"><div class="fillx ok" style="width:{{mw}}%;transition:width .4s"></div></div>
+    </div>
+    <div class="fx ai jb rise d3"><h2 class="h2">مواد مصرفی (BOM)</h2><span class="t12 m">با هر فروش از انبار کم می‌شود</span></div>
+    <div class="card rise d4" style="padding:6px 14px">
+      <table class="tbl"><thead><tr><th>ماده</th><th>مقدار</th><th class="n">هزینه</th></tr></thead><tbody>
+        <tr><td>دان قهوه</td><td><div class="stp"><button type="button" onClick="{{lessBean}}" aria-label="کم">−</button><b>{{bean}} گرم</b><button type="button" onClick="{{moreBean}}" aria-label="زیاد">+</button></div></td><td class="n">{{beanCost}}</td></tr>
+        <tr><td>آب تصفیه‌شده</td><td>۲۰۰ میلی‌لیتر</td><td class="n">۱۰۰</td></tr>
+        <tr><td>لیوان کاغذی</td><td>۱ عدد</td><td class="n">۳٬۰۰۰</td></tr>
+        <tr><td>درب</td><td>۱ عدد</td><td class="n">۱٬۵۰۰</td></tr>
+      </tbody></table>
+    </div>
+    <div class="fx ai jb rise d5"><h2 class="h2">SOP محصول</h2><span class="pill p-ok">نسخه ۲٫۰</span></div>
+    <div class="card rise d6">
+      <div class="fc g10 t14">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="5"><div class="fx g10"><b class="acc">{{s.n}}.</b><span class="f1">{{s.t}}</span></div></sc-for>
+      </div>
+      <button type="button" class="btn ghost tap" style="flex:none;margin-top:12px;height:42px;font-size:13px" onClick="{{addStep}}">+ افزودن مرحله</button>
+    </div>
+    <div class="card rise d7" style="padding:4px 16px">
+      <div class="kv"><div><b>نمایش در بخش دانش کارمندان</b><div class="t12 m">با آزمون و نمره قبولی ۸۰٪</div></div><label class="swl"><input class="swi" type="checkbox" checked aria-label="دانش"><span class="sw"></span></label></div>
+      <div class="kv"><b>فعال در شعبه ونک</b><label class="swl"><input class="swi" type="checkbox" checked aria-label="ونک"><span class="sw"></span></label></div>
+      <div class="kv"><b>فعال در شعبه سعادت‌آباد</b><label class="swl"><input class="swi" type="checkbox" checked aria-label="سعادت‌آباد"><span class="sw"></span></label></div>
+      <div class="kv"><b>نمایش در اپ مشتری</b><label class="swl"><input class="swi" type="checkbox" checked aria-label="نمایش در اپ"><span class="sw"></span></label></div>
+    </div>
+    <button type="button" class="btn tap rise d8" style="flex:none" onClick="{{save}}">{{saveTxt}}</button>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { price: 95000, bean: 18, extra: 0, saved: false }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const s = this.state;
+    const cost = s.bean * 1200 + 100 + 3000 + 1500;
+    const m = s.price > 0 ? (s.price - cost) / s.price : 0;
+    const base = ['۱۸ گرم دان تازه آسیاب‌شده در پورتافیلتر', 'تمپ و قفل پورتافیلتر', 'عصاره‌گیری ۲۵ تا ۳۰ ثانیه', '۱۵۰ میلی‌لیتر آب داغ به لیوان', 'درب و نوشتن نام مشتر'].map((t, i) => t);
+    base[4] = 'درب و نوشتن نام مشتری';
+    for (let i = 0; i < s.extra; i++) base.push('مرحله جدید، توضیح را بنویس');
+    return {
+      onPrice: (e) => { const v = parseInt(String(e.target.value).replace(/[^0-9]/g, ''), 10); this.setState({ price: isNaN(v) ? 0 : v, saved: false }); },
+      cost: fmt(cost) + ' تومان', margin: fa(Math.round(m * 100)) + '٪', mw: String(Math.max(0, Math.min(100, Math.round(m * 100)))),
+      bean: fa(s.bean), beanCost: fmt(s.bean * 1200),
+      lessBean: () => this.setState({ bean: Math.max(1, this.state.bean - 1), saved: false }),
+      moreBean: () => this.setState({ bean: this.state.bean + 1, saved: false }),
+      steps: base.map((t, i) => ({ n: fa(i + 1), t })),
+      addStep: () => this.setState({ extra: this.state.extra + 1, saved: false }),
+      save: () => this.setState({ saved: true }),
+      saveTxt: s.saved ? 'ذخیره شد، SOP نسخه ۲٫۱ برای کارمندان ارسال شد' : 'ذخیره محصول و SOP'
+    };
+  }
+}
+</script>
+</body>
+</html>

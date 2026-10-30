@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>تنخواه شعبه</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--mut);font-weight:600}
+.fld input,.fld select{height:46px;border-radius:14px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);padding:0 14px;font:inherit;font-size:15px;outline:0;width:100%;box-sizing:border-box}
+.fld input:focus,.fld select:focus{border-color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.cat{flex:none;height:36px;padding:0 15px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.cat.on{border-color:var(--ac);color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.bars{display:flex;align-items:flex-end;gap:6px;height:120px}
+.bars i{flex:1;border-radius:6px 6px 0 0;background:var(--ac);transition:height .4s;min-width:6px}
+</style>
+</helmet>
+<div class="app a-sage" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="BMHome.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">تنخواه شعبه</h1><div class="sub t12 m">خرج‌های کوچک و واریز به بانک</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1 tc"><div class="t12 m">موجودی تنخواه</div><div class="t36 w9 gold" style="line-height:1.2">{{bal}}</div></div>
+    <div class="card rise d2 fc g10"><div class="fx g8" style="overflow-x:auto"><sc-for list="{{cats}}" as="c" hint-placeholder-count="4"><button type="button" class="cat tap {{c.cls}}" onClick="{{c.pick}}">{{c.n}}</button></sc-for></div>
+      <div class="fx ai jb"><b class="t14">مبلغ</b><div class="stp"><button type="button" onClick="{{less}}" aria-label="کم">−</button><b style="min-width:84px">{{amt}}</b><button type="button" onClick="{{more}}" aria-label="زیاد">+</button></div></div>
+      <button type="button" class="btn tap" style="flex:none" onClick="{{add}}">ثبت خرج</button><div class="t12 m">سند: بدهکار هزینه مربوط، بستانکار تنخواه</div></div>
+    <button type="button" class="btn ghost tap rise d3" style="flex:none" onClick="{{dep}}">واریز باقیمانده به بانک</button>
+    <div class="fx ai jb rise d4"><h2 class="h2">گردش</h2></div>
+    <sc-for list="{{log}}" as="l" hint-placeholder-count="3"><div class="item"><div class="f1"><b class="t14 w8">{{l.t}}</b><div class="t12 m">{{l.d}}</div></div><b class="{{l.c}}">{{l.a}}</b></div></sc-for>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="BMHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="BMTeam.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>تیم</a>
+    <a href="BMStock.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>موجودی</a>
+    <a href="PettyCash.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>تنخواه</a>
+    <a href="AdminApprovals.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>تایید</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { bal: 2350000, c: 0, a: 150000, log: [['خرید شیر خرد', 'امروز', -420000], ['شارژ تنخواه', 'دیروز', 3000000]] }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const C = ['حمل', 'خرید جزئی', 'نظافت', 'سایر'];
+    const s = this.state;
+    return { bal: fmt(s.bal) + ' تومان', cats: C.map((n, i) => ({ n, cls: i === s.c ? 'on' : '', pick: () => this.setState({ c: i }) })), amt: fmt(s.a),
+      less: () => this.setState({ a: Math.max(50000, this.state.a - 50000) }), more: () => this.setState({ a: this.state.a + 50000 }),
+      add: () => { const t = this.state; if (t.a > t.bal) return; this.setState({ bal: t.bal - t.a, log: [[C[t.c], 'همین الان', -t.a]].concat(t.log) }); },
+      dep: () => { const t = this.state; if (t.bal <= 0) return; this.setState({ log: [['واریز به بانک ملت', 'همین الان', -t.bal]].concat(t.log), bal: 0 }); },
+      log: s.log.map((l) => ({ t: l[0], d: l[1], a: (l[2] > 0 ? '+' : '−') + fmt(Math.abs(l[2])), c: l[2] > 0 ? 'sage' : '' })) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>مطالعه دستورالعمل</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.chk{width:100%;text-align:right;color:var(--tx);cursor:pointer}
+.chk .box{width:28px;height:28px;border-radius:9px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink)}
+.chk.on{border-color:#B8ABF7;background:rgba(184,171,247,.12)}
+.chk.on .box{background:#B8ABF7;border-color:#B8ABF7}
+</style>
+</helmet>
+<div class="app a-vio" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="StaffSOP.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">تمیزکاری دستگاه اسپرسو</h1><div class="sub t12 m">نسخه ۳٫۲، ۲۸ مهر</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card rise d1" style="border-color:rgba(232,178,92,.5)"><div class="fx ai g10"><span class="pill p-warn">چه چیزی تغییر کرد</span></div><div class="t13" style="margin-top:8px">شست‌وشوی گروه جوش از پایان هر شیفت به هر ۴ ساعت یک‌بار تغییر کرد.</div></div>
+    <div class="card rise d2">
+      <b class="t15 w8">مراحل</b>
+      <div class="fc g10 t14" style="margin-top:10px">
+        <div><b class="acc">۱.</b> دستگاه را خاموش کن و بخار را تخلیه کن</div>
+        <div><b class="acc">۲.</b> پورتافیلتر و سبد را جدا کن و بشوی</div>
+        <div><b class="acc">۳.</b> گروه جوش را با برس مخصوص تمیز کن</div>
+        <div><b class="acc">۴.</b> لوله بخار را با دستمال مرطوب پاک کن</div>
+        <div><b class="acc">۵.</b> سینی آبچکان را خالی و شستشو کن</div>
+      </div>
+    </div>
+    <button type="button" class="item chk tap {{cls}}" onClick="{{toggle}}"><span class="box"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="f1 t14 w8">خواندم و متوجه شدم</span></button>
+    <sc-if value="{{ok}}" hint-placeholder-val="{{false}}"><div class="card pop tc" style="border-color:#8FD3A4"><b class="sage">تایید شما برای مدیر ثبت شد</b></div></sc-if>
+    <a href="StaffSOP.html" class="btn tap" style="flex:none;opacity:{{op}}">بازگشت به لیست</a>
+  </div>
+  <nav class="dock" aria-label="ناوبری کارمند">
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { ok: false }; }
+  renderVals() {
+    const ok = this.state.ok;
+    return { cls: ok ? 'on' : '', ok, op: ok ? '1' : '.6', toggle: () => this.setState({ ok: !this.state.ok }) };
+  }
+}
+</script>
+</body>
+</html>

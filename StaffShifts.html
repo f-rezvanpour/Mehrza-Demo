@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>شیفت‌های من</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.tile{min-height:0;padding:10px;align-items:center}
+</style>
+</helmet>
+<div class="app a-ter" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="StaffHome.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">شیفت‌های من</h1><div class="sub t12 m">هفته جاری</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1" style="padding:14px">
+      <div class="grid3" style="gap:6px;text-align:center">
+        <div class="tile"><div class="t11 m">شنبه</div><div class="t16 w9 acc">ص</div></div>
+        <div class="tile"><div class="t11 m">یکشنبه</div><div class="t16 w9 m">—</div></div>
+        <div class="tile"><div class="t11 m">دوشنبه</div><div class="t16 w9 acc">ص</div></div>
+      </div>
+      <div class="grid3" style="gap:6px;text-align:center;margin-top:6px">
+        <div class="tile"><div class="t11 m">سه‌شنبه</div><div class="t16 w9 m">—</div></div>
+        <div class="tile"><div class="t11 m">چهارشنبه</div><div class="t16 w9 m">—</div></div>
+        <div class="tile" style="border:2px solid #EE8F66"><div class="t11 m">پنجشنبه</div><div class="t16 w9 acc">ع</div></div>
+      </div>
+      <div class="t11 m" style="margin-top:8px">ص = صبح ۰۸ تا ۱۶، ع = عصر ۱۴ تا ۲۲</div>
+    </div>
+    <div class="item rise d2" style="border-color:#EE8F66"><span class="blob"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span><div class="f1"><b class="t14 w8">پنجشنبه، عصر</b><div class="t12 m">۱۴:۰۰ — ۲۲:۰۰، کنار بار</div></div><span class="pill p-info">امروز</span></div>
+    <div class="item rise d3"><span class="blob" style="background:#8FD3A4"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span><div class="f1"><b class="t14 w8">دوشنبه، صبح</b><div class="t12 m">۰۸:۰۰ — ۱۶:۰۰، صندوق</div></div></div>
+    <div class="item rise d4"><span class="blob" style="background:#8FD3A4"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span><div class="f1"><b class="t14 w8">شنبه، صبح</b><div class="t12 m">۰۸:۰۰ — ۱۶:۰۰، کنار بار</div></div></div>
+    <div class="card rise d5">
+      <div class="fx ai jb"><div><b class="t14 w8">جابه‌جایی شیفت</b><div class="t12 m">{{swapNote}}</div></div><button type="button" class="btn tap" style="flex:none;height:40px;padding:0 16px;font-size:13px;border-radius:14px" onClick="{{swap}}">{{swapBtn}}</button></div>
+    </div>
+  </div>
+  <nav class="dock" aria-label="ناوبری کارمند">
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { sent: false }; }
+  renderVals() {
+    const sent = this.state.sent;
+    return {
+      swapNote: sent ? 'درخواست برای مدیر و هم‌تیمی‌ها رفت' : 'شیفت دوشنبه را با هم‌تیمی عوض کن',
+      swapBtn: sent ? 'لغو درخواست' : 'درخواست',
+      swap: () => this.setState({ sent: !this.state.sent })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ثبت حضور</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.wifi{position:relative;width:170px;height:170px;margin:0 auto}
+.wifi .r{position:absolute;inset:0;border-radius:50%;border:2px solid currentColor;opacity:0}
+.wifi.on .r{animation:ripl 2s ease-out infinite}
+.wifi.on .r2{animation-delay:.6s}
+@keyframes ripl{0%{transform:scale(.4);opacity:.7}100%{transform:scale(1.1);opacity:0}}
+</style>
+</helmet>
+<div class="app a-sage" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="StaffHome.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">ثبت حضور</h1><div class="sub t12 m">با Wi-Fi کافه، بدون کارت و امضا</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1 tc">
+      <div class="wifi {{wifiCls}}" style="color:{{color}}">
+        <span class="r"></span><span class="r r2"></span>
+        <div class="fc jc ai" style="position:absolute;inset:0"><svg viewBox="0 0 48 48" width="76" height="76" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M6 18c10-9 26-9 36 0"/><path d="M13 26c6-5 16-5 22 0"/><path d="M20 33c2.5-2 5.5-2 8 0"/><circle cx="24" cy="40" r="2.5" fill="currentColor"/></svg></div>
+      </div>
+      <div class="t18 w9" style="margin-top:12px">{{headline}}</div>
+      <div class="t13 m">{{sub}}</div>
+      <button type="button" class="btn tap" style="margin-top:16px" onClick="{{act}}">{{btn}}</button>
+    </div>
+    <div class="card rise d2" style="padding:4px 16px">
+      <div class="kv"><span class="m">شبکه</span><b class="sage" style="direction:ltr">Mehrza-Staff</b></div>
+      <div class="kv"><span class="m">ورود</span><b>{{inTime}}</b></div>
+      <div class="kv"><span class="m">شیفت</span><b>۱۴:۰۰ — ۲۲:۰۰</b></div>
+    </div>
+    <div class="fx ai jb rise d3"><h2 class="h2">سابقه هفته</h2><span class="pill p-info">۳۲ ساعت</span></div>
+    <div class="item rise d4"><span class="dot" style="background:#8FD3A4"></span><div class="f1"><b class="t14">دوشنبه</b></div><span class="t13 m">۰۷:۵۸ — ۱۶:۰۴</span><span class="pill p-ok">به‌موقع</span></div>
+    <div class="item rise d5"><span class="dot" style="background:#E8B25C"></span><div class="f1"><b class="t14">شنبه</b></div><span class="t13 m">۰۸:۱۲ — ۱۶:۰۰</span><span class="pill p-warn">۱۲ دقیقه تاخیر</span></div>
+  </div>
+  <nav class="dock" aria-label="ناوبری کارمند">
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: 0, t: '' }; }
+  renderVals() {
+    const s = this.state.s;
+    const go = () => {
+      if (s === 0) {
+        this.setState({ s: 1 });
+        setTimeout(() => this.setState({ s: 2, t: '۱۳:۵۹' }), 1400);
+      } else if (s === 2) {
+        this.setState({ s: 0, t: '' });
+      }
+    };
+    return {
+      wifiCls: s === 1 ? 'on' : '',
+      color: s === 2 ? '#8FD3A4' : (s === 1 ? '#E8B25C' : '#9A8576'),
+      headline: s === 0 ? 'هنوز ثبت نشده' : (s === 1 ? 'در حال شناسایی شبکه...' : 'ورودت ثبت شد'),
+      sub: s === 0 ? 'به Wi-Fi کافه وصل شو و دکمه را بزن' : (s === 1 ? 'چند لحظه صبر کن' : 'موفق باشی، ساعت ۱۳:۵۹'),
+      btn: s === 0 ? 'ثبت ورود' : (s === 1 ? 'لطفا صبر کن' : 'ثبت خروج'),
+      inTime: s === 2 ? this.state.t : '—',
+      act: go
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>سفارش خرید</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.vs{position:relative;padding-inline-start:40px;min-height:50px}
+.vs::before{content:"";position:absolute;inset-inline-start:14px;top:30px;bottom:-6px;width:3px;background:var(--line)}
+.vs:last-child::before{display:none}
+.vs .pt{position:absolute;inset-inline-start:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--card2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.vs.done .pt{background:#8FD3A4;border-color:#8FD3A4}
+.vs.cur .pt{background:#E8B25C;border-color:#E8B25C}
+.vs .tt{font-weight:700;color:var(--mut)}.vs.done .tt,.vs.cur .tt{color:var(--tx)}
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="Suppliers.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">سفارش خرید ۲۰۶</h1><div class="sub t12 m">کافه‌دان تهران و بسته‌بندی آریا</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card rise d1" style="padding:4px 16px"><div class="kv"><span>دان قهوه ۳۰ کیلو</span><b>۳۶٬۰۰۰٬۰۰۰</b></div><div class="kv"><span>لیوان ۱٬۰۰۰ و درب ۱٬۰۰۰</span><b>۴٬۵۰۰٬۰۰۰</b></div><div class="kv"><b>جمع</b><b class="gold">۴۰٬۵۰۰٬۰۰۰</b></div></div>
+    <div class="card rise d2" style="padding:16px"><div class="fc g16">
+      <sc-for list="{{steps}}" as="s" hint-placeholder-count="3"><div class="vs {{s.cls}}"><span class="pt"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="tt t14">{{s.t}}</div><div class="t12 m">{{s.d}}</div></div></sc-for>
+    </div></div>
+    <button type="button" class="btn tap rise d3" style="flex:none" onClick="{{next}}">{{btn}}</button>
+    <sc-if value="{{rcv}}" hint-placeholder-val="{{false}}"><a href="InvReceipt.html" class="btn ghost tap" style="flex:none">ثبت رسید خرید در انبار</a></sc-if>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: 0 }; }
+  renderVals() {
+    const s = this.state.s;
+    const T = [['پیش‌نویس', 'قابل ویرایش'], ['ارسال شد به تامین‌کننده', 'با پیامک و ایمیل'], ['تامین‌کننده تایید کرد', 'تحویل فردا'], ['تحویل گرفته شد', 'آماده ثبت رسید']];
+    return { steps: T.map((x, i) => ({ t: x[0], d: x[1], cls: i < s ? 'done' : (i === s ? 'cur' : '') })), btn: ['ارسال سفارش', 'نمایش: تایید تامین‌کننده', 'نمایش: تحویل کالا', 'تمام شد'][s], rcv: s === 3, next: () => this.setState({ s: Math.min(3, this.state.s + 1) }) };
+  }
+}
+</script>
+</body>
+</html>

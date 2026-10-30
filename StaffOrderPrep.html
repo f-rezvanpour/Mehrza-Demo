@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>آماده‌سازی سفارش</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.tk{width:100%;text-align:right;color:var(--tx);cursor:pointer;font-size:14px}
+.tk .box{width:26px;height:26px;border-radius:9px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink);transition:background .25s}
+.tk.done{border-color:rgba(143,211,164,.5);background:rgba(143,211,164,.1)}
+.tk.done .box{background:#8FD3A4;border-color:#8FD3A4}
+.tk.done .txt{color:var(--mut);text-decoration:line-through}
+</style>
+</helmet>
+<div class="app a-ter" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="StaffOrders.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">سفارش ۱۰۴۲</h1><div class="sub t12 m">آمریکانو و لاته، نیلوفر حسینی</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1">
+      <div class="fx ai jb"><span class="pill {{pc}}">{{pt}}</span><span class="t13 m">{{hint}}</span></div>
+      <button type="button" class="btn tap" style="flex:none;margin-top:12px;opacity:{{op}}" onClick="{{act}}">{{btn}}</button>
+    </div>
+    <sc-if value="{{started}}" hint-placeholder-val="{{true}}">
+    <div class="card rise d2" style="border-color:rgba(238,143,102,.5)">
+      <div class="fx ai g8" style="margin-bottom:8px"><svg class="i acc" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg><b class="t14 w8">کسر خودکار از انبار طبق SOP</b></div>
+      <div class="kv"><span class="m">دان قهوه</span><b>۳۶ گرم</b></div>
+      <div class="kv"><span class="m">شیر</span><b>۲۰۰ میلی‌لیتر</b></div>
+      <div class="kv"><span class="m">لیوان و درب</span><b>۲ عدد</b></div>
+      <div class="t12 m" style="margin-top:6px">هزینه مواد این سفارش: ۶۴٬۳۰۰ تومان، ثبت در بهای تمام‌شده</div>
+    </div>
+    <div class="fx ai jb rise d3"><h2 class="h2">دستور تهیه: آمریکانو</h2><span class="t12 m">{{doneA}}</span></div>
+    <sc-for list="{{a}}" as="s" hint-placeholder-count="5"><button type="button" class="item tk tap {{s.cls}}" onClick="{{s.toggle}}"><span class="box"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="f1 txt">{{s.text}}</span></button></sc-for>
+    <div class="fx ai jb rise d4"><h2 class="h2">دستور تهیه: لاته</h2><span class="t12 m">{{doneL}}</span></div>
+    <sc-for list="{{l}}" as="s" hint-placeholder-count="5"><button type="button" class="item tk tap {{s.cls}}" onClick="{{s.toggle}}"><span class="box"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="f1 txt">{{s.text}}</span></button></sc-for>
+    </sc-if>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { st: 0, a: [false, false, false, false, false], l: [false, false, false, false, false] }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const A = ['۱۸ گرم دان تازه آسیاب‌شده را در پورتافیلتر بریز', 'تمپ کن و پورتافیلتر را قفل کن', 'عصاره‌گیری ۲۵ تا ۳۰ ثانیه، حدود ۳۶ گرم', '۱۵۰ میلی‌لیتر آب داغ به لیوان اضافه کن', 'درب را ببند و نام مشتری را بنویس'];
+    const L = ['۱۸ گرم دان را آسیاب و تمپ کن', 'شات اسپرسو بگیر', '۲۰۰ میلی‌لیتر شیر را تا ۶۰ درجه بخار بده', 'شیر را با شات یکی کن', 'درب را ببند و نام مشتری را بنویس'];
+    const s = this.state.st, a = this.state.a, l = this.state.l;
+    const all = a.every(Boolean) && l.every(Boolean);
+    const mk = (arr, key, T) => T.map((text, i) => ({ text, cls: arr[i] ? 'done' : '', toggle: () => { const n = this.state[key].slice(); n[i] = !n[i]; const o = {}; o[key] = n; this.setState(o); } }));
+    const PT = ['جدید', 'در حال آماده‌سازی', 'آماده تحویل', 'تحویل شد'];
+    const PC = ['p-bad', 'p-warn', 'p-ok', 'p-ok'];
+    const HINT = ['منتظر شروع', 'همه مراحل را تیک بزن', 'مشتری در اپ مطلع شد', 'برای مشتری ثبت شد'];
+    const BTN = ['شروع آماده‌سازی', 'آماده شد', 'تحویل به مشتری', 'پایان، بازگشت به سفارش‌ها'];
+    return {
+      pt: PT[s], pc: PC[s], hint: HINT[s], btn: BTN[s],
+      op: (s === 1 && !all) ? '.5' : '1',
+      started: s >= 1,
+      act: () => {
+        const c = this.state;
+        if (c.st === 0) this.setState({ st: 1 });
+        else if (c.st === 1 && c.a.every(Boolean) && c.l.every(Boolean)) this.setState({ st: 2 });
+        else if (c.st === 2) this.setState({ st: 3 });
+      },
+      a: mk(a, 'a', A), l: mk(l, 'l', L),
+      doneA: fa(a.filter(Boolean).length) + ' از ۵', doneL: fa(l.filter(Boolean).length) + ' از ۵'
+    };
+  }
+}
+</script>
+</body>
+</html>

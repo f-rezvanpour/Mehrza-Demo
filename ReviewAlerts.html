@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>نظرهای کم‌ستاره</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-rose" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AdminMore.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">نظرهای کم‌ستاره</h1><div class="sub t12 m">هشدار به مدیر شعبه</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1"><div class="fx ai jb"><div><b class="t14 w8">آستانه هشدار</b><div class="t12 m">نظر ۲ ستاره یا کمتر، پوش فوری به مدیر شعبه</div></div><div class="stp"><button type="button" onClick="{{less}}" aria-label="کم">−</button><b>{{th}}★</b><button type="button" onClick="{{more}}" aria-label="زیاد">+</button></div></div></div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="3"><div class="card rise d2"><div class="fx ai jb"><b class="t14">{{r.who}}</b><span class="gold t14" style="direction:ltr">{{r.stars}}</span></div><div class="t13 m" style="margin:4px 0">{{r.txt}}</div><div class="t11 m">سفارش {{r.no}}، {{r.br}}، باریستا {{r.bar}}</div>
+      <div class="fx g8" style="margin-top:8px"><button type="button" class="btn ghost tap" style="flex:1;height:38px;font-size:12.5px;border-radius:12px" onClick="{{r.comp}}">{{r.cbtn}}</button><button type="button" class="btn tap" style="flex:1;height:38px;font-size:12.5px;border-radius:12px" onClick="{{r.res}}">{{r.rbtn}}</button></div></div></sc-for>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { th: 2, c: [false, false, false], r: [false, false, false] }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const R = [['پویا مرادی', 3, 'کمی دیر شد ولی طعمش خوب بود.', '۰۹۹۰', 'سعادت‌آباد', 'سارا'], ['مشتری ناشناس', 2, 'خیلی دیر شد و قهوه سرد بود.', '۱۰۳۱', 'ونک', 'علی'], ['هلیا جوادی', 1, 'لاته اشتباه آمد.', '۱۰۲۴', 'ونک', 'رضا']];
+    const s = this.state;
+    const rows = R.filter((x) => x[1] <= s.th + 1).map((x, i) => ({ who: x[0], stars: '★'.repeat(x[1]) + '☆'.repeat(5 - x[1]), txt: x[2], no: x[3], br: x[4], bar: x[5], cbtn: s.c[i] ? 'کد جبرانی ارسال شد' : 'ارسال کد جبرانی', rbtn: s.r[i] ? 'حل شد' : 'علامت حل‌شده',
+      comp: () => { const a = this.state.c.slice(); a[i] = true; this.setState({ c: a }); }, res: () => { const a = this.state.r.slice(); a[i] = true; this.setState({ r: a }); } }));
+    return { th: fa(s.th), rows, less: () => this.setState({ th: Math.max(1, this.state.th - 1) }), more: () => this.setState({ th: Math.min(4, this.state.th + 1) }) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>کارمند جدید</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--mut);font-weight:600}
+.fld input,.fld select{height:46px;border-radius:14px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);padding:0 14px;font:inherit;font-size:15px;outline:0;width:100%;box-sizing:border-box}
+.fld input:focus,.fld select:focus{border-color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+
+</style>
+</helmet>
+<div class="app a-sky" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="BranchDetail.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">کارمند جدید</h1><div class="sub t12 m">اطلاعات پرسنلی و نوع حقوق</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card rise d1 fc g12">
+      <b class="t14 w8">اطلاعات هویتی</b>
+      <div class="grid2" style="gap:10px"><label class="fld"><span>نام</span><input type="text" placeholder="علی"></label><label class="fld"><span>نام خانوادگی</span><input type="text" placeholder="کرمی"></label></div>
+      <div class="grid2" style="gap:10px"><label class="fld"><span>کد ملی</span><input type="text" inputmode="numeric" placeholder="۱۰ رقم"></label><label class="fld"><span>تاریخ تولد</span><input type="text" placeholder="۱۳۷۸/۰۵/۱۲"></label></div>
+      <label class="fld"><span>موبایل</span><input type="text" inputmode="tel" placeholder="۰۹۱۲..." style="direction:ltr"></label>
+      <label class="fld"><span>آدرس محل سکونت</span><input type="text"></label>
+    </div>
+    <div class="card rise d2 fc g12">
+      <b class="t14 w8">تماس اضطراری و بانکی</b>
+      <div class="grid2" style="gap:10px"><label class="fld"><span>نام نزدیک</span><input type="text"></label><label class="fld"><span>شماره تماس</span><input type="text" inputmode="tel"></label></div>
+      <label class="fld"><span>شماره شبا</span><input type="text" placeholder="IR..." style="direction:ltr"></label>
+    </div>
+    <div class="card rise d3 fc g12">
+      <b class="t14 w8">اطلاعات شغلی</b>
+      <div class="grid2" style="gap:10px"><label class="fld"><span>شعبه</span><select><option>مهرزا ونک</option><option>مهرزا سعادت‌آباد</option></select></label><label class="fld"><span>سمت</span><select><option>باریستا</option><option>کمک‌باریستا</option><option>صندوق‌دار</option><option>سرپرست</option></select></label></div>
+      <label class="fld"><span>تاریخ استخدام</span><input type="text" placeholder="۱۴۰۵/۰۸/۰۶"></label>
+    </div>
+    <div class="card rise d4 fc g12">
+      <b class="t14 w8">نوع حقوق</b>
+      <div class="tabs"><button type="button" class="{{c0}}" onClick="{{t0}}">روزمزد</button><button type="button" class="{{c1}}" onClick="{{t1}}">شیفتی</button><button type="button" class="{{c2}}" onClick="{{t2}}">ماهیانه</button></div>
+      <sc-if value="{{p0}}" hint-placeholder-val="{{true}}"><label class="fld"><span>مبلغ هر روز کاری (تومان)</span><input type="text" inputmode="numeric" value="۶۰۰۰۰۰"></label></sc-if>
+      <sc-if value="{{p1}}" hint-placeholder-val="{{false}}"><div class="grid2" style="gap:10px"><label class="fld"><span>شیفت صبح</span><input type="text" inputmode="numeric" value="۵۲۰۰۰۰"></label><label class="fld"><span>شیفت عصر</span><input type="text" inputmode="numeric" value="۵۸۰۰۰۰"></label></div></sc-if>
+      <sc-if value="{{p2}}" hint-placeholder-val="{{false}}"><label class="fld"><span>حقوق ماهیانه (تومان)</span><input type="text" inputmode="numeric" value="۱۸۰۰۰۰۰۰"></label></sc-if>
+      <label class="fld"><span>نرخ ساعت اضافه‌کاری</span><input type="text" inputmode="numeric" value="۱۵۰۰۰۰"></label>
+      <div class="t12 m">{{note}}</div>
+    </div>
+    <a href="BranchDetail.html" class="btn tap rise d5" style="flex:none">ثبت کارمند و ساخت حساب اپ</a>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { t: 0 }; }
+  renderVals() {
+    const t = this.state.t;
+    const N = ['حقوق = تعداد روزهای کاری × مبلغ روزانه', 'حقوق = تعداد شیفت صبح و عصر × نرخ هر شیفت', 'حقوق ثابت ماهیانه، با کسر غیبت به نسبت ۱ سی‌ام'];
+    return { c0: t === 0 ? 'on' : '', c1: t === 1 ? 'on' : '', c2: t === 2 ? 'on' : '', p0: t === 0, p1: t === 1, p2: t === 2, t0: () => this.setState({ t: 0 }), t1: () => this.setState({ t: 1 }), t2: () => this.setState({ t: 2 }), note: N[t] + '. نوع حقوق هر زمان قابل تغییر است.' };
+  }
+}
+</script>
+</body>
+</html>

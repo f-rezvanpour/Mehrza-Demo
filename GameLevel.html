@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>مرحله آسیاب</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.gbtn{border:0;color:var(--ink);background:var(--ac);height:60px;border-radius:20px;font-size:17px;font-weight:900;width:100%;cursor:pointer}
+.gbtn:active{transform:scale(.97)}
+</style>
+</helmet>
+<div class="app a-rose" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="Game.html" aria-label="بازگشت به نقشه"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">مرحله ۵: آسیاب</h1><div class="sub t12 m">برای هر دانه یک بار لمس کن</div></div>
+  </div>
+
+  <div class="scroll nd">
+    <div class="card hero rise d1" style="padding:12px 16px">
+      <div class="fx ai jb"><span class="t13 m">دانه‌های آسیاب‌شده</span><b class="acc t16">{{countFa}} از ۵</b></div>
+      <div class="track big" style="margin-top:8px"><div style="height:100%;border-radius:6px;background:var(--ac);width:{{pct}}%;transition:width .4s ease"></div></div>
+    </div>
+
+    <div class="card rise d2" style="padding:14px 10px">
+      <svg viewBox="0 0 320 250" width="100%" height="250" role="img" aria-label="آسیاب قهوه و فنجان که با هر دانه پر می‌شود">
+        <path d="M100 18h120l-24 70h-72z" fill="#3A2A20" stroke="#F5A1BB" stroke-width="3" stroke-linejoin="round"/>
+        <circle class="fall s1" cx="150" cy="36" r="7" fill="#6B4228"/>
+        <circle class="fall s2" cx="172" cy="40" r="7" fill="#6B4228"/>
+        <circle class="fall s3" cx="160" cy="30" r="7" fill="#6B4228"/>
+        <rect x="116" y="88" width="88" height="46" rx="12" fill="#32241B" stroke="#F5A1BB" stroke-width="3"/>
+        <g class="spin" style="transform-origin:160px 111px"><circle cx="160" cy="111" r="14" fill="none" stroke="#E8B25C" stroke-width="3.5" stroke-dasharray="9 6"/></g>
+        <circle cx="160" cy="111" r="4" fill="#F6EBDD"/>
+        <rect class="drip" x="158" y="136" width="4" height="12" rx="2" fill="#B5773A"/>
+        <clipPath id="gl"><path d="M110 150h100v34a40 40 0 01-40 40h-20a40 40 0 01-40-40z"/></clipPath>
+        <path d="M110 150h100v34a40 40 0 01-40 40h-20a40 40 0 01-40-40z" fill="#32241B"/>
+        <g clip-path="url(#gl)"><rect x="100" y="{{fillY}}" width="120" height="{{fillH}}" fill="#B5773A"/><rect x="100" y="{{fillY}}" width="120" height="7" fill="#E8B25C" opacity=".85"/></g>
+        <path d="M110 150h100v34a40 40 0 01-40 40h-20a40 40 0 01-40-40z" fill="none" stroke="#F5A1BB" stroke-width="3.5" stroke-linejoin="round"/>
+        <path d="M210 160h12a14 14 0 010 36h-14" fill="none" stroke="#F5A1BB" stroke-width="3.5" stroke-linecap="round"/>
+        <path class="steam s1" d="M140 140c-5-6 5-9 0-15" stroke="#F6EBDD" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0"/>
+        <ellipse cx="160" cy="236" rx="76" ry="10" fill="#32241B" stroke="#F5A1BB" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <sc-if value="{{notDone}}" hint-placeholder-val="{{true}}">
+      <button type="button" class="gbtn tap" onClick="{{grind}}">آسیاب کن</button>
+    </sc-if>
+
+    <sc-if value="{{allDone}}" hint-placeholder-val="{{false}}">
+      <div class="card pop tc" style="border-color:#E8B25C">
+        <div class="fx jc g8" style="margin-bottom:4px"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><g class="coin" style="transform-origin:12px 12px"><circle cx="12" cy="12" r="10" fill="#E8B25C"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1B120D" stroke-width="2"/></g></svg><b class="t20 w9 gold">۳۰+ سکه</b></div>
+        <div class="t14 w7">مرحله آسیاب کامل شد</div>
+        <div class="t12 m">قهوه‌ات آماده‌ی دم‌کردن است.</div>
+      </div>
+      <div class="fx g10">
+        <a href="GameRewards.html" class="btn tap">دریافت جایزه</a>
+        <button type="button" class="btn ghost tap" onClick="{{again}}">دوباره</button>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { count: 2 };
+  }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const c = this.state.count;
+    const fillH = Math.round((c / 5) * 58);
+    return {
+      countFa: fa(c),
+      pct: String(Math.round((c / 5) * 100)),
+      fillH: String(fillH),
+      fillY: String(224 - fillH),
+      notDone: c < 5,
+      allDone: c >= 5,
+      grind: () => this.setState({ count: Math.min(5, this.state.count + 1) }),
+      again: () => this.setState({ count: 0 })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>چاپگرها</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.rc{background:#fff;color:#1B120D;border-radius:10px;padding:14px;font-size:11.5px;line-height:1.7;font-weight:600}
+.rc hr{border:0;border-top:1px dashed #999;margin:6px 0}
+.lbl2{background:#fff;color:#1B120D;border-radius:10px;padding:10px 14px;font-weight:800;width:150px}
+</style>
+</helmet>
+<div class="app a-vio" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AdminMore.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">چاپگرها</h1><div class="sub t12 m">رسید و برچسب لیوان</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card rise d1" style="padding:4px 16px"><div class="kv"><div><b>چاپگر رسید، ونک</b><div class="t12 m">حرارتی ۸۰ میلی‌متر</div></div><span class="pill p-ok">متصل</span></div><div class="kv"><div><b>برچسب لیوان، بار</b><div class="t12 m">برچسب‌زن</div></div><span class="pill p-ok">متصل</span></div><div class="kv"><div><b>چاپگر سعادت‌آباد</b></div><span class="pill p-bad">قطع</span></div></div>
+    <div class="fx g12 rise d2" style="align-items:flex-start"><div class="rc f1"><div class="tc"><b>کافه مهرزا، ونک</b></div><hr>آمریکانو ×۲<span style="float:left">۱۹۰٬۰۰۰</span><br>چیزکیک<span style="float:left">۱۳۵٬۰۰۰</span><hr><b>جمع</b><span style="float:left"><b>۳۲۵٬۰۰۰</b></span><br><span style="font-size:10px">سفارش ۱۰۴۳، صندوق‌دار: نگار</span></div>
+      <div class="fc g8"><div class="lbl2">آمریکانو<div style="font-size:11px;font-weight:600">نیلوفر، سفارش ۱۰۴۲</div></div><div class="lbl2">لاته، شیر بادام<div style="font-size:11px;font-weight:600">نیلوفر، ۱ شات اضافه</div></div></div></div>
+    <div class="card rise d3" style="padding:4px 16px"><div class="kv"><b>چاپ خودکار رسید بعد از پرداخت</b><label class="swl"><input class="swi" type="checkbox" checked aria-label="رسید"><span class="sw"></span></label></div><div class="kv"><b>چاپ برچسب برای هر نوشیدنی</b><label class="swl"><input class="swi" type="checkbox" checked aria-label="برچسب"><span class="sw"></span></label></div></div>
+    <button type="button" class="btn ghost tap rise d4" style="flex:none" onClick="{{t}}">{{b}}</button>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: false }; }
+  renderVals() { return { b: this.state.s ? 'چاپ آزمایشی ارسال شد' : 'چاپ آزمایشی', t: () => this.setState({ s: true }) }; }
+}
+</script>
+</body>
+</html>

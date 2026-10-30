@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>SOP شیفت</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.tk{width:100%;text-align:right;color:var(--tx);cursor:pointer;font-size:14.5px}
+.tk .box{width:30px;height:30px;border-radius:10px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink);transition:background .25s,border-color .25s}
+.tk.done{border-color:rgba(143,211,164,.5);background:rgba(143,211,164,.1)}
+.tk.done .box{background:#8FD3A4;border-color:#8FD3A4}
+.tk.done .txt{color:var(--mut);text-decoration:line-through}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:42px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+</style>
+</helmet>
+<div class="app a-sage" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="StaffHome.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">SOP شیفت</h1><div class="sub t12 m">مشترک برای همه کارمندان</div></div>
+  </div>
+  <div class="scroll">
+    <div class="tabs rise d1"><button type="button" class="{{c0}}" onClick="{{t0}}">شروع شیفت</button><button type="button" class="{{c1}}" onClick="{{t1}}">پایان شیفت</button></div>
+    <div class="card hero rise d2">
+      <div class="fx ai jb"><div><div class="t13 m">{{title}}</div><div class="t24 w9">{{doneFa}} از ۶</div></div><span class="pill p-info">{{note}}</span></div>
+      <div class="track big" style="margin-top:10px"><div class="fillx ok" style="width:{{pct}}%;transition:width .4s"></div></div>
+    </div>
+    <sc-for list="{{tasks}}" as="t" hint-placeholder-count="6">
+      <button type="button" class="item tk tap {{t.cls}}" onClick="{{t.toggle}}">
+        <span class="box"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <span class="f1 txt">{{t.text}}</span>
+      </button>
+    </sc-for>
+    <a href="StaffSOP.html" class="btn ghost tap rise d4" style="flex:none">همه دستورالعمل‌ها</a>
+  </div>
+  <nav class="dock" aria-label="ناوبری کارمند">
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="StaffOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="StaffAttend.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>حضور</a>
+    <a href="StaffShifts.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>شیفت</a>
+    <a href="StaffMe.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>من</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { tab: 0, d: [[true, true, false, false, false, false], [false, false, false, false, false, false]] }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const L = [
+      ['روشن کردن دستگاه و چک فشار بویلر', 'آسیاب را کالیبره کن و یک شات آزمایشی بگیر', 'شمارش شیر، دانه و لیوان و ثبت در انبار', 'تمیزی میزها، ویترین و سرویس بهداشتی', 'روشن کردن موسیقی و تابلو', 'ثبت ورود با Wi-Fi و باز کردن صندوق'],
+      ['تمیزکاری دستگاه اسپرسو طبق دستورالعمل', 'شست‌وشوی پیچر، شیرجوش و آسیاب', 'شمارش موجودی پایان شیفت', 'ثبت ضایعات و دورریز', 'بستن صندوق و ارسال گزارش روز', 'خاموش کردن تجهیزات و ثبت خروج']
+    ];
+    const t = this.state.tab;
+    const d = this.state.d[t];
+    const n = d.filter(Boolean).length;
+    return {
+      c0: t === 0 ? 'on' : '', c1: t === 1 ? 'on' : '',
+      t0: () => this.setState({ tab: 0 }), t1: () => this.setState({ tab: 1 }),
+      title: t === 0 ? 'آماده‌سازی شروع شیفت' : 'بستن پایان شیفت',
+      note: t === 0 ? 'قبل از باز شدن' : 'بعد از آخرین سفارش',
+      tasks: L[t].map((x, i) => ({ text: x, cls: d[i] ? 'done' : '', toggle: () => { const all = this.state.d.map((a) => a.slice()); all[t][i] = !all[t][i]; this.setState({ d: all }); } })),
+      doneFa: fa(n), pct: String(Math.round(n * 100 / 6))
+    };
+  }
+}
+</script>
+</body>
+</html>

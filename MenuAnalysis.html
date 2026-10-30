@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>تحلیل منو</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.cat{flex:none;height:36px;padding:0 15px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.cat.on{border-color:var(--ac);color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.bars{display:flex;align-items:flex-end;gap:6px;height:120px}
+.bars i{flex:1;border-radius:6px 6px 0 0;background:var(--ac);transition:height .4s;min-width:6px}.qd{position:relative;width:100%;height:260px;border-radius:20px;background:var(--card);border:1px solid var(--line);overflow:hidden}
+.qd::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line)}
+.qd::after{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:var(--line)}
+.qd .dot2{position:absolute;width:12px;height:12px;border-radius:50%;transform:translate(-50%,50%)}
+.qd .l{position:absolute;font-size:10.5px;color:var(--mut);font-weight:700}
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AdminMore.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">تحلیل منو</h1><div class="sub t12 m">کدام محصول سودآور و کدام زیان‌ده است</div></div>
+  </div>
+  <div class="scroll">
+    <div class="qd rise d1">
+      <span class="l" style="top:8px;right:10px">ستاره</span><span class="l" style="top:8px;left:10px">معما</span><span class="l" style="bottom:8px;right:10px">اسب باری</span><span class="l" style="bottom:8px;left:10px">ضعیف</span>
+      <sc-for list="{{dots}}" as="d" hint-placeholder-count="9"><span class="dot2" style="right:{{d.x}}%;bottom:{{d.y}}%;background:{{d.col}}"></span></sc-for>
+    </div>
+    <div class="t11 m tc">محور افقی: محبوبیت (تعداد فروش)، محور عمودی: حاشیه سود</div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="9"><div class="item rise d2"><span class="dot" style="background:{{r.col}}"></span><div class="f1"><b class="t14 w8">{{r.n}}</b><div class="t12 m">{{r.act}}</div></div><span class="pill {{r.pc}}">{{r.k}}</span></div></sc-for>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = [['لاته', 90, 68], ['آمریکانو', 85, 72], ['کاپوچینو', 70, 71], ['کروسان', 55, 61], ['اسپرسو', 45, 66], ['چیزکیک', 40, 64], ['شکلات داغ', 30, 68], ['وی‌شصت', 25, 77], ['کیک هویج', 20, 63]];
+    const mp = P.reduce((a, p) => a + p[1], 0) / P.length, mm = P.reduce((a, p) => a + p[2], 0) / P.length;
+    const K = { s: ['ستاره', 'p-ok', '#8FD3A4', 'حفظ کن و در منو برجسته کن'], h: ['اسب باری', 'p-warn', '#E8B25C', 'قیمت یا هزینه را بازبینی کن'], m: ['معما', 'p-info', '#8CCBE0', 'بیشتر تبلیغ کن'], d: ['ضعیف', 'p-bad', '#F08A8A', 'بازطراحی یا حذف را بررسی کن'] };
+    const cl = (p) => p[1] >= mp ? (p[2] >= mm ? 's' : 'h') : (p[2] >= mm ? 'm' : 'd');
+    return {
+      dots: P.map((p) => ({ x: String(Math.round(100 - ((p[1] - 10) / 90) * 90 - 5)), y: String(Math.round(((p[2] - 55) / 25) * 85 + 5)), col: K[cl(p)][2] })),
+      rows: P.map((p) => { const k = K[cl(p)]; return { n: p[0], k: k[0], pc: k[1], col: k[2], act: k[3] }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

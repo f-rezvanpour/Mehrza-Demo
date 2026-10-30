@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>اقتصاد سکه</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+input[type=range]{width:100%;height:44px;accent-color:#F5A1BB;margin:0}
+</style>
+</helmet>
+<div class="app a-rose" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="GameAdmin.html" aria-label="بازگشت به مدیریت بازی"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">اقتصاد سکه</h1><div class="sub t12 m">کسب و تبدیل به تخفیف</div></div>
+  </div>
+
+  <div class="scroll">
+    <div class="card hero rise d1">
+      <div class="fx ai g16">
+        <svg viewBox="0 0 90 90" width="84" height="84" aria-hidden="true" style="flex:none"><circle cx="45" cy="45" r="40" fill="#E8B25C" opacity=".12" class="pulse"/><g class="coin" style="transform-origin:45px 45px"><circle cx="45" cy="45" r="30" fill="#E8B25C"/><circle cx="45" cy="45" r="21" fill="none" stroke="#1B120D" stroke-width="3.5"/><path d="M45 33v24M38 40h11a4 4 0 010 8H38" stroke="#1B120D" stroke-width="3.5" fill="none" stroke-linecap="round"/></g></svg>
+        <div class="f1"><div class="t13 m">سکه‌ی یک دور کامل بازی</div><div class="t30 w9 gold" style="line-height:1.2">{{totalFa}}</div><div class="t12 m">بدون سفارش واقعی</div></div>
+      </div>
+    </div>
+
+    <div class="card rise d2">
+      <div class="fx ai jb"><b class="t14">سکه هر مرحله</b><b class="t16 w9 acc">{{stageFa}}</b></div>
+      <input type="range" min="10" max="80" step="5" value="{{stage}}" onInput="{{setStage}}" aria-label="سکه هر مرحله">
+      <div class="fx ai jb"><b class="t14">سکه هر سفارش در کافه</b><b class="t16 w9 acc">{{orderFa}}</b></div>
+      <input type="range" min="0" max="100" step="5" value="{{order}}" onInput="{{setOrder}}" aria-label="سکه هر سفارش">
+    </div>
+
+    <div class="fx ai jb rise d3"><h2 class="h2">تبدیل سکه به تخفیف</h2></div>
+    <div class="card rise d4" style="padding:4px 16px">
+      <div class="kv"><span>۲۵۰ سکه</span><b class="acc">۵٪ تخفیف</b></div>
+      <div class="kv"><span>۵۰۰ سکه</span><b class="acc">۱۰٪ تخفیف</b></div>
+      <div class="kv"><span>۸۰۰ سکه</span><b class="acc">نوشیدنی رایگان</b></div>
+      <div class="kv"><span>اعتبار هر کد</span><b>۱۴ روز</b></div>
+    </div>
+
+    <div class="card rise d5" style="padding:4px 16px">
+      <div class="kv"><div><b>لیگ هفتگی</b><div class="t12 m">رقابت بازیکنان</div></div><label class="swl"><input class="swi" type="checkbox" checked aria-label="لیگ هفتگی"><span class="sw"></span></label></div>
+      <div class="kv"><div><b>چالش‌ها</b><div class="t12 m">ماموریت روزانه</div></div><label class="swl"><input class="swi" type="checkbox" checked aria-label="چالش‌ها"><span class="sw"></span></label></div>
+      <div class="kv"><div><b>اعلان بازگشت</b><div class="t12 m">بعد از ۳ روز غیبت</div></div><label class="swl"><input class="swi" type="checkbox" checked aria-label="اعلان بازگشت"><span class="sw"></span></label></div>
+      <div class="kv"><div><b>دعوت دوستان</b><div class="t12 m">۵۰ سکه برای هر دعوت</div></div><label class="swl"><input class="swi" type="checkbox" aria-label="دعوت دوستان"><span class="sw"></span></label></div>
+    </div>
+  </div>
+
+  <nav class="dock" aria-label="ناوبری مدیریت بازی">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="GameAdmin.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span>آمار</a>
+    <a href="GameCoupons.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M12 7v10" stroke-dasharray="2 3"/></svg></span>کدها</a>
+    <a href="GameEconomy.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10.5h4a1.5 1.5 0 010 3h-4"/></svg></span>اقتصاد</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { stage: 30, order: 40 };
+  }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const s = this.state.stage;
+    const o = this.state.order;
+    return {
+      stage: String(s),
+      order: String(o),
+      stageFa: fa(s),
+      orderFa: fa(o),
+      totalFa: fa(s * 8),
+      setStage: (e) => this.setState({ stage: Number(e.target.value) }),
+      setOrder: (e) => this.setState({ order: Number(e.target.value) })
+    };
+  }
+}
+</script>
+</body>
+</html>
