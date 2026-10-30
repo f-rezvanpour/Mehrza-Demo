@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>پیگیری سفارش</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.vs{position:relative;padding-inline-start:40px;min-height:56px}
+.vs::before{content:"";position:absolute;inset-inline-start:14px;top:30px;bottom:-6px;width:3px;background:var(--line)}
+.vs:last-child::before{display:none}
+.vs .pt{position:absolute;inset-inline-start:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--card2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink);transition:all .4s}
+.vs.done .pt{background:#8FD3A4;border-color:#8FD3A4}
+.vs.cur .pt{background:#F5A1BB;border-color:#F5A1BB;animation:pulse 1.4s infinite}
+.vs.done::before{background:#8FD3A4}
+.vs .tt{color:var(--mut);font-weight:700}
+.vs.done .tt,.vs.cur .tt{color:var(--tx)}
+</style>
+</helmet>
+<div class="app a-rose" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AppHome.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">پیگیری سفارش</h1><div class="sub t12 m">سفارش شماره ۱۰۴۲</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1 tc">
+      <svg viewBox="0 0 120 110" width="130" height="120" aria-hidden="true" style="margin:0 auto;display:block">
+        <path class="steam s1" d="M45 28c-5-6 5-9 0-15" stroke="#F6EBDD" stroke-width="3" fill="none" stroke-linecap="round" opacity="{{steam}}"/>
+        <path class="steam s2" d="M62 28c-5-6 5-9 0-15" stroke="#F6EBDD" stroke-width="3" fill="none" stroke-linecap="round" opacity="{{steam}}"/>
+        <path class="steam s3" d="M79 28c-5-6 5-9 0-15" stroke="#F6EBDD" stroke-width="3" fill="none" stroke-linecap="round" opacity="{{steam}}"/>
+        <path d="M30 40h62v28a24 24 0 01-24 24H54a24 24 0 01-24-24z" fill="#F6EBDD"/>
+        <path d="M92 48h8a10 10 0 010 22h-8" fill="none" stroke="#F6EBDD" stroke-width="7"/>
+        <path d="M30 52h62" stroke="#6B4228" stroke-width="12"/>
+      </svg>
+      <div class="t18 w9">{{headline}}</div>
+      <div class="t13 m">{{sub}}</div>
+    </div>
+    <div class="card rise d2" style="padding:16px">
+      <div class="fc g16">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="4"><div class="vs {{s.cls}}"><span class="pt"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="tt t14">{{s.t}}</div><div class="t12 m">{{s.d}}</div></div></sc-for>
+      </div>
+    </div>
+    <div class="item rise d3"><div class="av">ع</div><div class="f1"><b class="t14 w8">علی کرمی</b><div class="t12 m">باریستا، شیفت عصر شعبه ونک</div></div></div>
+    <sc-if value="{{done}}" hint-placeholder-val="{{false}}"><a href="AppRate.html" class="btn tap pop" style="flex:none">نظرت را بگو و سکه بگیر</a></sc-if>
+    <button type="button" class="btn ghost tap" style="flex:none;height:40px;font-size:12.5px" onClick="{{next}}">{{demo}}</button>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: 1 }; }
+  renderVals() {
+    const s = this.state.s;
+    const T = [
+      ['سفارش ثبت شد', 'برای باریستا شعبه ارسال شد'],
+      ['در حال آماده‌سازی', 'باریستا طبق دستور تهیه کار می‌کند'],
+      ['آماده تحویل', 'سفارشت را از پیشخوان بگیر'],
+      ['تحویل داده شد', 'نوش جان']
+    ];
+    const H = ['', 'دارند آماده‌اش می‌کنند', 'سفارشت آماده است', 'نوش جان'];
+    const SUB = ['', 'حدود ۵ دقیقه دیگر', 'نام شما روی لیوان نوشته شده', 'یک نظر کوتاه بده'];
+    return {
+      steps: T.map((x, i) => ({ t: x[0], d: x[1], cls: i < s ? 'done' : (i === s ? 'cur' : '') })),
+      headline: H[s] || H[1], sub: SUB[s] || SUB[1],
+      steam: s === 1 ? '1' : (s === 2 ? '.5' : '0'),
+      done: s === 3,
+      demo: s === 3 ? 'شروع دوباره نمایش' : 'نمایش: مرحله بعد (باریستا می‌زند)',
+      next: () => this.setState({ s: this.state.s === 3 ? 1 : this.state.s + 1 })
+    };
+  }
+}
+</script>
+</body>
+</html>

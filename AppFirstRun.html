@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>اولین اجرا</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="scroll" style="justify-content:center">
+    <div class="card hero rise d1 tc"><svg viewBox="0 0 160 120" width="170" height="130" aria-hidden="true"><g class="bounce"><sc-if value="{{a0}}" hint-placeholder-val="{{true}}"><path d="M40 40h64v28a26 26 0 01-26 26H66a26 26 0 01-26-26z" fill="#F6EBDD"/><path d="M104 50h10a11 11 0 010 24h-10" fill="none" stroke="#F6EBDD" stroke-width="7"/></sc-if><sc-if value="{{a1}}" hint-placeholder-val="{{false}}"><circle cx="80" cy="60" r="34" fill="#E8B25C"/><circle cx="80" cy="60" r="22" fill="none" stroke="#1B120D" stroke-width="5"/></sc-if><sc-if value="{{a2}}" hint-placeholder-val="{{false}}"><path d="M80 22l12 26 28 4-20 20 5 28-25-14-25 14 5-28-20-20 28-4z" fill="#E8B25C"/></sc-if></g></svg><h1 class="t24 w9" style="margin:6px 0">{{title}}</h1><div class="t13 m">{{text}}</div>
+      <div class="fx jc g8" style="margin-top:14px"><sc-for list="{{dots}}" as="d" hint-placeholder-count="3"><i style="width:{{d.w}}px;height:8px;border-radius:4px;background:{{d.c}};display:block"></i></sc-for></div></div>
+    <sc-if value="{{last}}" hint-placeholder-val="{{false}}"><button type="button" class="btn ghost tap" style="flex:none" onClick="{{perm}}">{{pbtn}}</button></sc-if>
+    <sc-if value="{{notLast}}" hint-placeholder-val="{{true}}"><button type="button" class="btn tap" style="flex:none" onClick="{{next}}">بعدی</button></sc-if>
+    <sc-if value="{{last}}" hint-placeholder-val="{{false}}"><a href="AppHome.html" class="btn tap" style="flex:none">شروع</a></sc-if>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { i: 0, p: false }; }
+  renderVals() {
+    const S = [
+      ['سفارش آسان', 'از اپ سفارش بده و بدون صف در کافه تحویل بگیر.', '<path d="M40 40h64v28a26 26 0 01-26 26H66a26 26 0 01-26-26z" fill="#F6EBDD"/><path d="M104 50h10a11 11 0 010 24h-10" fill="none" stroke="#F6EBDD" stroke-width="7"/>'],
+      ['بازی و سکه', 'مراحل قهوه را بازی کن و سکه را به تخفیف واقعی تبدیل کن.', '<circle cx="80" cy="60" r="34" fill="#E8B25C"/><circle cx="80" cy="60" r="22" fill="none" stroke="#1B120D" stroke-width="5"/>'],
+      ['باشگاه مهرزا', 'با هر خرید امتیاز بگیر و سطحت را بالا ببر.', '<path d="M80 22l12 26 28 4-20 20 5 28-25-14-25 14 5-28-20-20 28-4z" fill="#E8B25C"/>']
+    ];
+    const s = this.state;
+    return { a0: s.i === 0, a1: s.i === 1, a2: s.i === 2, notLast: s.i < 2, title: S[s.i][0], text: S[s.i][1], dots: [0, 1, 2].map((k) => ({ w: k === s.i ? 22 : 8, c: k === s.i ? '#E8B25C' : '#6A5646' })), last: s.i === 2,
+      pbtn: s.p ? 'اعلان‌ها فعال شد' : 'فعال کردن اعلان‌ها', perm: () => this.setState({ p: true }),
+      next: () => this.setState({ i: Math.min(2, this.state.i + 1) }) };
+  }
+}
+</script>
+</body>
+</html>

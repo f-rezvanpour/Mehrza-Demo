@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>قوانین و حریم خصوصی</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.cb{width:100%;text-align:right;color:var(--tx);cursor:pointer}
+.cb .box{width:26px;height:26px;border-radius:8px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink)}
+.cb.on .box{background:#8FD3A4;border-color:#8FD3A4}
+</style>
+</helmet>
+<div class="app a-sage" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AppWelcome.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">قبل از شروع</h1><div class="sub t12 m">قوانین و حریم خصوصی</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card rise d1"><b class="t14 w8">چه اطلاعاتی نگه می‌داریم؟</b><div class="t13 m" style="margin-top:4px">شماره موبایل، سابقه سفارش، امتیاز و سکه. اطلاعات پرداخت ذخیره نمی‌شود و به کسی فروخته نمی‌شود. هر زمان می‌توانی حساب و داده‌هایت را حذف کنی.</div></div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="4"><button type="button" class="item cb tap {{r.cls}}" onClick="{{r.tg}}"><span class="box"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="f1 t14">{{r.t}}<span class="t11 m"> {{r.opt}}</span></span></button></sc-for>
+    <a href="AppFirstRun.html" class="btn tap" style="flex:none;opacity:{{op}};pointer-events:{{pe}}">ادامه</a>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { c: [false, false, false, false] }; }
+  renderVals() {
+    const R = [['قوانین استفاده را پذیرفتم', '', 1], ['سیاست حریم خصوصی را خواندم', '', 1], ['سن من بالای ۱۶ سال است', '', 1], ['دریافت پیشنهاد و تخفیف', '(اختیاری)', 0]];
+    const c = this.state.c;
+    const ok = R.every((r, i) => !r[2] || c[i]);
+    return { rows: R.map((r, i) => ({ t: r[0], opt: r[1], cls: c[i] ? 'on' : '', tg: () => { const a = this.state.c.slice(); a[i] = !a[i]; this.setState({ c: a }); } })), op: ok ? '1' : '.5', pe: ok ? 'auto' : 'none' };
+  }
+}
+</script>
+</body>
+</html>

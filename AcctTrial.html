@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>تراز آزمایشی</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-sage" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AcctHome.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">تراز آزمایشی</h1><div class="sub t12 m">مهر ۱۴۰۵، میلیون تومان</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1"><div class="fx ai jb"><div><div class="t12 m">جمع بدهکار</div><div class="t20 w9">{{tot}}</div></div><span class="pill p-ok">تراز است</span><div class="tc"><div class="t12 m">جمع بستانکار</div><div class="t20 w9">{{tot}}</div></div></div></div>
+    <div class="card rise d2" style="padding:6px 14px">
+      <table class="tbl"><thead><tr><th>حساب</th><th class="n">بدهکار</th><th class="n">بستانکار</th></tr></thead><tbody>
+        <sc-for list="{{rows}}" as="r" hint-placeholder-count="20"><tr><td>{{r.a}}</td><td class="n">{{r.d}}</td><td class="n">{{r.c}}</td></tr></sc-for>
+        <tr><td><b>جمع</b></td><td class="n">{{tot}}</td><td class="n">{{tot}}</td></tr>
+      </tbody></table>
+    </div>
+    <div class="t12 m tc">با هر سند فروش، انبار، حقوق و هزینه خودکار به‌روز می‌شود.</div>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const fmt = (n) => fa(Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '٬'));
+    const fm = (n) => { const s = (Math.round(n * 10) / 10).toString().split('.'); s[0] = s[0].replace(/\B(?=(\d{3})+(?!\d))/g, '٬'); return fa(s.join('٫')); };
+    const R = [['صندوق', 85, 0], ['بانک ملت', 740, 0], ['حساب‌های دریافتنی (کارت‌خوان)', 120, 0], ['موجودی مواد اولیه', 210, 0], ['موجودی بسته‌بندی', 38, 0], ['تجهیزات و دستگاه‌ها', 1450, 0],
+      ['حساب‌های پرداختنی (تامین‌کنندگان)', 0, 175], ['حقوق و بیمه پرداختنی', 0, 96], ['مالیات بر ارزش افزوده', 0, 61], ['استهلاک انباشته', 0, 112], ['وام بانکی', 0, 305], ['سرمایه', 0, 1500],
+      ['فروش', 0, 1860], ['بهای تمام‌شده کالای فروش‌رفته', 612, 0], ['هزینه حقوق و دستمزد', 420, 0], ['هزینه اجاره', 240, 0], ['هزینه برق', 38, 0], ['هزینه آب', 9.5, 0], ['هزینه گاز', 16.5, 0],
+      ['هزینه اینترنت و تلفن', 6, 0], ['هزینه تعمیرات', 22, 0], ['هزینه بازاریابی', 60, 0], ['هزینه استهلاک', 28, 0], ['سایر هزینه‌ها', 14, 0]];
+    const td = R.reduce((a, r) => a + r[1], 0);
+    return { rows: R.map((r) => ({ a: r[0], d: r[1] ? fm(r[1]) : '—', c: r[2] ? fm(r[2]) : '—' })), tot: fm(td) };
+  }
+}
+</script>
+</body>
+</html>

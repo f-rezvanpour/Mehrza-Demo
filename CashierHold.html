@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>سفارش‌های نگه‌داشته</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="CashierPOS.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">سفارش‌های نگه‌داشته</h1><div class="sub t12 m">برای مشتری که برمی‌گردد</div></div>
+  </div>
+  <div class="scroll">
+    <sc-for list="{{rows}}" as="h" hint-placeholder-count="2"><div class="card rise d2"><div class="fx ai jb"><b class="t14 w8">{{h.n}}</b><span class="t12 m">{{h.t}}</span></div><div class="t12 m" style="margin:2px 0 8px">{{h.d}}</div><div class="fx ai jb"><b class="gold">{{h.a}}</b><div class="fx g8"><button type="button" class="btn ghost tap" style="flex:none;height:36px;padding:0 12px;font-size:12px;border-radius:12px" onClick="{{h.del}}">حذف</button><a href="CashierPOS.html" class="btn tap" style="flex:none;height:36px;padding:0 14px;font-size:12px;border-radius:12px">ادامه</a></div></div></div></sc-for>
+    <sc-if value="{{empty}}" hint-placeholder-val="{{false}}"><div class="card tc m">سفارشی نگه داشته نشده</div></sc-if>
+    <div class="t12 m tc">سفارش نگه‌داشته‌شده تا پایان شیفت می‌ماند و در بستن صندوق باید تکلیفش روشن شود.</div>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="CashierPOS.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>صندوق</a>
+    <a href="CashierOrders.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>سفارش‌ها</a>
+    <a href="CashClose.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>بستن صندوق</a>
+    <a href="StaffHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>کارمند</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { h: [0, 1] }; }
+  renderVals() {
+    const H = [['میز ۴', '۱۴:۲۰', 'لاته ×۲، کروسان', '۳۲۰٬۰۰۰'], ['مشتری ۲ (منتظر دوستش)', '۱۴:۴۰', 'آمریکانو', '۹۵٬۰۰۰']];
+    const k = this.state.h;
+    return { rows: k.map((i) => ({ n: H[i][0], t: H[i][1], d: H[i][2], a: H[i][3] + ' تومان', del: () => this.setState({ h: this.state.h.filter((x) => x !== i) }) })), empty: k.length === 0 };
+  }
+}
+</script>
+</body>
+</html>

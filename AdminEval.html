@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ارزیابی ماهانه</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.cat{flex:none;height:36px;padding:0 15px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.cat.on{border-color:var(--ac);color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.bars{display:flex;align-items:flex-end;gap:6px;height:120px}
+.bars i{flex:1;border-radius:6px 6px 0 0;background:var(--ac);transition:height .4s;min-width:6px}
+</style>
+</helmet>
+<div class="app a-sky" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AdminMore.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">ارزیابی ماهانه</h1><div class="sub t12 m">مهر ۱۴۰۵، پیشنهاد از داده‌های واقعی</div></div>
+  </div>
+  <div class="scroll">
+    <div class="tabs rise d1"><button type="button" class="{{e0}}" onClick="{{s0}}">علی</button><button type="button" class="{{e1}}" onClick="{{s1}}">سارا</button><button type="button" class="{{e2}}" onClick="{{s2}}">نگار</button></div>
+    <div class="card hero rise d2 tc"><div class="t12 m">میانگین نمره</div><div class="t36 w9 gold" style="line-height:1.2">{{avg}}</div><div class="t13 m">{{bonus}}</div></div>
+    <div class="card rise d3" style="padding:4px 16px">
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="4"><div class="kv"><div><b>{{r.n}}</b><div class="t12 m">{{r.hint}}</div></div><div class="stp"><button type="button" onClick="{{r.less}}" aria-label="کم">−</button><b>{{r.v}}</b><button type="button" onClick="{{r.more}}" aria-label="زیاد">+</button></div></div></sc-for>
+    </div>
+    <button type="button" class="btn tap rise d4" style="flex:none" onClick="{{save}}">{{btn}}</button>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { e: 0, v: [[4.8, 4.6, 4.7, 4.5], [4.2, 4.5, 4.3, 4.0], [4.6, 4.0, 4.4, 4.2]], ok: false }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]).replace('.', '٫');
+    const N = ['وقت‌شناسی', 'کیفیت نوشیدنی', 'رضایت مشتری', 'انجام وظایف'];
+    const H = [['۱ تاخیر ۱۲ دقیقه‌ای', 'از SOP و بازخورد', 'میانگین ستاره ۴٫۷', '۸۶٪ وظایف انجام شد'], ['۰ تاخیر', 'از آزمون‌ها ۸۸٪', 'میانگین ستاره ۴٫۳', '۷۵٪ وظایف انجام شد'], ['۲ تاخیر', 'از SOP و بازخورد', 'میانگین ستاره ۴٫۴', '۸۰٪ وظایف انجام شد']];
+    const s = this.state, v = s.v[s.e];
+    const avg = v.reduce((a, b) => a + b, 0) / 4;
+    const bonus = avg >= 4.5 ? '۸۰۰٬۰۰۰ تومان' : (avg >= 4 ? '۴۰۰٬۰۰۰ تومان' : 'ندارد');
+    const ch = (i, d) => () => { const a = this.state.v.map((r) => r.slice()); a[this.state.e][i] = Math.max(1, Math.min(5, Math.round((a[this.state.e][i] + d) * 10) / 10)); this.setState({ v: a, ok: false }); };
+    return { e0: s.e === 0 ? 'on' : '', e1: s.e === 1 ? 'on' : '', e2: s.e === 2 ? 'on' : '', s0: () => this.setState({ e: 0, ok: false }), s1: () => this.setState({ e: 1, ok: false }), s2: () => this.setState({ e: 2, ok: false }),
+      avg: fa(Math.round(avg * 100) / 100), bonus: 'پاداش در حقوق آبان: ' + bonus,
+      rows: N.map((n, i) => ({ n, hint: H[s.e][i], v: fa(v[i]), less: ch(i, -0.1), more: ch(i, 0.1) })),
+      save: () => this.setState({ ok: true }), btn: s.ok ? 'ثبت شد، پاداش به حقوق اضافه شد' : 'ثبت ارزیابی' };
+  }
+}
+</script>
+</body>
+</html>

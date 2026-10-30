@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>تایید درخواست‌ها</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+</style>
+</helmet>
+<div class="app a-sky" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AdminMore.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">تایید درخواست‌ها</h1><div class="sub t12 m">مرخصی و اضافه‌کاری</div></div>
+  </div>
+  <div class="scroll">
+    <div class="card hero rise d1 tc"><div class="t12 m">منتظر تصمیم</div><div class="t36 w9 gold" style="line-height:1.2">{{left}}</div></div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="3"><div class="card rise d2"><div class="fx ai jb"><b class="t14">{{r.who}}</b><span class="pill {{r.pc}}">{{r.st}}</span></div><div class="t13 m" style="margin:4px 0 8px">{{r.d}}</div>
+      <sc-if value="{{r.pending}}" hint-placeholder-val="{{true}}"><div class="fx g8"><button type="button" class="btn tap" style="flex:1;height:40px;font-size:13px;border-radius:12px" onClick="{{r.ok}}">تایید</button><button type="button" class="btn ghost tap" style="flex:1;height:40px;font-size:13px;border-radius:12px" onClick="{{r.no}}">رد</button></div></sc-if></div></sc-for>
+    <div class="t12 m tc">نتیجه با پوش به کارمند اطلاع داده می‌شود و در حقوق اعمال می‌شود.</div>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: [0, 0, 0, 0, 0] }; }
+  renderVals() {
+    const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    const R = [['نگار عباسی', 'اضافه‌کاری ۳ ساعت، ۴۵۰٬۰۰۰ تومان'], ['علی کرمی', 'مرخصی استحقاقی، ۱۵ تا ۱۶ آبان'], ['رضا اکبری', 'مرخصی ساعتی، ۲ ساعت، پنجشنبه'], ['سارا نوری', 'تصحیح حضور: ورود فراموش‌شده ۰۸:۰۰، شنبه'], ['سارا نوری و نگار عباسی', 'جابه‌جایی شیفت: دوشنبه صبح با پنجشنبه عصر']];
+    const set = (i, v) => () => { const a = this.state.s.slice(); a[i] = v; this.setState({ s: a }); };
+    const ST = [['منتظر', 'p-warn'], ['تایید شد', 'p-ok'], ['رد شد', 'p-bad']];
+    return { left: fa(this.state.s.filter((x) => x === 0).length), rows: R.map((r, i) => ({ who: r[0], d: r[1], st: ST[this.state.s[i]][0], pc: ST[this.state.s[i]][1], pending: this.state.s[i] === 0, ok: set(i, 1), no: set(i, 2) })) };
+  }
+}
+</script>
+</body>
+</html>

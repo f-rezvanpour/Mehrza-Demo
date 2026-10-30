@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>لاگ تغییرات</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.cat{flex:none;height:36px;padding:0 15px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.cat.on{border-color:var(--ac);color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.bars{display:flex;align-items:flex-end;gap:6px;height:120px}
+.bars i{flex:1;border-radius:6px 6px 0 0;background:var(--ac);transition:height .4s;min-width:6px}
+</style>
+</helmet>
+<div class="app a-vio" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AdminMore.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">لاگ تغییرات</h1><div class="sub t12 m">چه کسی، چه چیزی، کی</div></div>
+  </div>
+  <div class="scroll">
+    <div class="fx g8 rise d1" style="overflow-x:auto"><sc-for list="{{cats}}" as="c" hint-placeholder-count="5"><button type="button" class="cat tap {{c.cls}}" onClick="{{c.pick}}">{{c.n}}</button></sc-for></div>
+    <sc-for list="{{rows}}" as="e" hint-placeholder-count="6"><div class="card rise d2"><div class="fx ai jb"><b class="t14 w8">{{e.who}}</b><span class="pill {{e.pc}}">{{e.cat}}</span></div><div class="t13" style="margin:4px 0">{{e.what}}</div><div class="fx ai g8 t12"><span style="color:#F08A8A;text-decoration:line-through">{{e.from}}</span><span class="m">←</span><b class="sage">{{e.to}}</b></div><div class="t11 m" style="margin-top:4px">{{e.when}}، {{e.dev}}</div></div></sc-for>
+    <div class="t12 m tc">این لاگ فقط خواندنی است و حذف نمی‌شود.</div>
+  </div>
+  <nav class="dock" aria-label="ناوبری">
+    <a href="Main.html" class="on"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg></span>خانه</a>
+    <a href="AcctHome.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>حسابداری</a>
+    <a href="InvKardex.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></svg></span>انبار</a>
+    <a href="ProdList.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 9h2a2 2 0 010 4h-2"/></svg></span>محصولات</a>
+    <a href="Branches.html"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10l1-5h14l1 5"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg></span>شعبه‌ها</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { c: 'همه' }; }
+  renderVals() {
+    const E = [
+      ['مهدی صادقی', 'قیمت لاته', 'محصول', 'p-info', 'تغییر قیمت', '۱۱۵٬۰۰۰', '۱۲۰٬۰۰۰', 'امروز ۱۱:۲۰', 'گوشی مدیر'],
+      ['زهرا احمدی', 'سند ۴۸۱۹ ویرایش شد', 'حسابداری', 'p-warn', 'حقوق علی', '۱۴٬۶۵۰٬۰۰۰', '۱۴٬۷۵۰٬۰۰۰', 'امروز ۱۰:۰۵', 'رایانه دفتر'],
+      ['مدیر', 'دسترسی نگار', 'دسترسی', 'p-bad', 'نقش', 'کارمند', 'صندوق‌دار', 'دیروز ۱۸:۴۰', 'گوشی مدیر'],
+      ['نگار عباسی', 'تخفیف ۱۰٪ سفارش ۱۰۴۳', 'صندوق', 'p-warn', 'تایید مدیر', 'ندارد', 'تایید شد', 'دیروز ۱۵:۱۰', 'صندوق ونک'],
+      ['زهرا احمدی', 'تعدیل انبارگردانی', 'انبار', 'p-info', 'دان قهوه', '۱۲٬۵۰۰ گرم', '۱۲٬۴۳۶ گرم', '۲ روز پیش', 'رایانه دفتر'],
+      ['مهدی صادقی', 'مقدار دان آمریکانو در SOP', 'محصول', 'p-info', 'مقدار', '۱۷ گرم', '۱۸ گرم', '۳ روز پیش', 'گوشی مدیر']
+    ];
+    const cats = ['همه', 'محصول', 'حسابداری', 'دسترسی', 'صندوق', 'انبار'];
+    const sel = this.state.c;
+    return { cats: cats.map((n) => ({ n, cls: n === sel ? 'on' : '', pick: () => this.setState({ c: n }) })), rows: E.filter((e) => sel === 'همه' || e[2] === sel).map((e) => ({ who: e[0], what: e[1] + '، ' + e[4], cat: e[2], pc: e[3], from: e[5], to: e[6], when: e[7], dev: e[8] })) };
+  }
+}
+</script>
+</body>
+</html>

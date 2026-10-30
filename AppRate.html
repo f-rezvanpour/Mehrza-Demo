@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>نظر شما</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script src="./dc-lite.js" defer></script>
+<style>html{background:#0b0705}@media(min-width:520px){body{display:flex;justify-content:center;padding:24px 0;min-height:100vh;box-sizing:border-box}x-dc{border-radius:38px;overflow:hidden;box-shadow:0 0 0 8px #1d1510,0 30px 80px rgba(0,0,0,.6);height:844px}}x-dc{display:block}</style>
+<link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--mut);font-weight:600}
+.fld input,.fld select{height:46px;border-radius:14px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);padding:0 14px;font:inherit;font-size:15px;outline:0;width:100%;box-sizing:border-box}
+.fld input:focus,.fld select:focus{border-color:var(--ac)}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--mut);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.tabs button.on{border-color:var(--ac);color:var(--ac)}
+.stp{display:flex;align-items:center;gap:8px}
+.stp button{width:34px;height:34px;border-radius:11px;border:1.5px solid var(--line);background:var(--card2);color:var(--tx);font:inherit;font-size:18px;font-weight:900;cursor:pointer}
+.stp b{min-width:28px;text-align:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;color:var(--mut);font-weight:700;text-align:right;padding:6px 4px}
+.tbl td{padding:9px 4px;border-top:1px solid var(--line)}
+.tbl .n{text-align:left;direction:ltr;font-weight:800}
+.star{background:none;border:0;cursor:pointer;padding:2px;transition:transform .2s}
+.star:active{transform:scale(1.25)}
+</style>
+</helmet>
+<div class="app a-gold" dir="rtl">
+  <div class="glow"></div>
+  <div class="bar rise">
+    <a class="back tap" href="AppTrack.html" aria-label="بازگشت"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <div class="f1"><h1 class="ttl">نظر شما</h1><div class="sub t12 m">سفارش ۱۰۴۲، آمریکانو و لاته</div></div>
+  </div>
+  <div class="scroll">
+    <sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
+    <div class="card hero rise d1 tc">
+      <div class="t16 w8">سفارشت چطور بود؟</div>
+      <div class="fx jc g8" style="margin-top:10px;direction:ltr">
+        <sc-for list="{{stars}}" as="s" hint-placeholder-count="5"><button type="button" class="star" onClick="{{s.pick}}" aria-label="{{s.lbl}}"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .8-4.4 4.1 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.4l6-.8z" fill="{{s.fill}}" stroke="#E8B25C" stroke-width="1.6" stroke-linejoin="round"/></svg></button></sc-for>
+      </div>
+      <div class="t13 m" style="margin-top:6px">{{word}}</div>
+    </div>
+    <div class="card rise d2"><label class="fld"><span>توضیح (اختیاری)</span><input type="text" placeholder="مثلا: لاته عالی بود" onInput="{{onText}}"></label></div>
+    <button type="button" class="btn tap rise d3" style="flex:none;opacity:{{op}}" onClick="{{send}}">ثبت نظر</button>
+    </sc-if>
+    <sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+    <div class="card hero pop tc">
+      <svg viewBox="0 0 24 24" width="64" height="64" aria-hidden="true" class="bounce"><g class="coin" style="transform-origin:12px 12px"><circle cx="12" cy="12" r="10" fill="#E8B25C"/><circle cx="12" cy="12" r="6" fill="none" stroke="#1B120D" stroke-width="2"/></g></svg>
+      <div class="t18 w9">ممنون از نظرت</div>
+      <div class="t13 m">۱۰ سکه به کیف پولت اضافه شد و نظرت به مدیر شعبه رسید.</div>
+    </div>
+    <a href="AppHome.html" class="btn tap" style="flex:none">بازگشت به خانه</a>
+    </sc-if>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { r: 0, sent: false }; }
+  renderVals() {
+    const r = this.state.r;
+    const W = ['', 'خیلی بد', 'بد', 'معمولی', 'خوب', 'عالی'];
+    return {
+      stars: [1, 2, 3, 4, 5].map((n) => ({ fill: n <= r ? '#E8B25C' : 'none', lbl: n + ' ستاره', pick: () => this.setState({ r: n }) })),
+      word: W[r] || 'ستاره‌ها را لمس کن',
+      op: r ? '1' : '.5',
+      sent: this.state.sent, notSent: !this.state.sent,
+      onText: () => {},
+      send: () => { if (this.state.r) this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
